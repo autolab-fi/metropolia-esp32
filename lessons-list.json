@@ -1,0 +1,9 @@
+[
+    {
+        "str_id": "lesson-1",
+        "name": "Example of the Lesson",
+        "link": "https://raw.githubusercontent.com/autolab-fi/course-template/main/lessons/module-1/draw.md",
+        "sn": 0,
+        "module": "module-1"
+    }
+]
