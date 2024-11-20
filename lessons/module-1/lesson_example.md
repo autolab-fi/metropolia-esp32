@@ -10,7 +10,7 @@ Markdown is a lightweight markup language with plain text formatting syntax. It 
 
 ### Example of an Image in Text:
 
-![robot](https://github.com/autolab-fi/course-template/blob/main/images/module-1/image_for_lesson_1.jpg?raw=true)
+![robot](https://github.com/autolab-fi/metropolia-esp32/blob/main/images/course-info/img-1.jpg?raw=true)
 
 ### Example of List Formatting:
 1. Examples of different fonts and unordered lists:
