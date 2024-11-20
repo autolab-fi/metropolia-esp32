@@ -1,9 +1,9 @@
 [
     {
-        "name":"Introduction to the Course",
-        "description": "Getting familiar with the platform.",
+        "name":"Name of the module",
+        "description": "Description of the module",
         "sn": 0,
-        "str_id":"module_0",
+        "str_id":"test_module",
         "lessons":[
             {
                 "str_id": "draw",
