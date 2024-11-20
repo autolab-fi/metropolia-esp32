@@ -6,9 +6,9 @@
         "str_id":"module_0",
         "lessons":[
             {
-                "str_id": "lesson_0",
-                "name": "Lesson example",
-                "url": "https://raw.githubusercontent.com/autolab-fi/course-template/main/lessons/module-1/lesson_example.md",
+                "str_id": "draw",
+                "name": "Sandbox",
+                "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/main/lessons/module-1/lesson_example.md",
                 "sn": 0,
                 "description": "Example of the lesson."
             }
