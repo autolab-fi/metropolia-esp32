@@ -1,8 +1,8 @@
 {
-    "fullCourseName":"Metropolia dev-course esp32",
-    "shortCourseName":"Metropolia dev-course esp32", 
-    "shortDescription":"It is short description. It should be up to 160 characters.",
-    "fullDescription":"it is full description. It should be about 500 characters.",
+    "fullCourseName":"Esp32 developer course @ Metropolia",
+    "shortCourseName":"Esp32 developer course @ Metropolia", 
+    "shortDescription":"Course on microcontroller programming designed by students at Metropolia University of applied science.",
+    "fullDescription":"Course on microcontroller programming designed by students at Metropolia University of applied science.",
     "imageSmall":"https://github.com/autolab-fi/metropolia-esp32/blob/main/images/course-info/img-1.jpg?raw=true",
     "imageBig":"https://github.com/autolab-fi/metropolia-esp32/blob/main/images/course-info/img-1.jpg?raw=true",
     "workload":"0 hours",
