@@ -1,6 +1,6 @@
 {
-    "fullCourseName":"Esp32 developer course @ Metropolia",
-    "shortCourseName":"Esp32 developer course @ Metropolia", 
+    "fullCourseName":"Esp32 board developer course @ Metropolia",
+    "shortCourseName":"Esp32 board developer course @ Metropolia", 
     "shortDescription":"Course on microcontroller programming designed by students at Metropolia University of applied science.",
     "fullDescription":"Course on microcontroller programming designed by students at Metropolia University of applied science.",
     "imageSmall":"https://github.com/autolab-fi/metropolia-esp32/blob/main/images/course-info/img-1.jpg?raw=true",
