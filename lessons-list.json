@@ -11,7 +11,7 @@
                 "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/main/lessons/module_1/draw.md",
                 "sn": 0,
                 "description": "Introduction to the platform, listing all peripherals, describing what we will be working with, and outlining any restrictions on libraries and tag words.",
-                "template":"// Include the library for controlling the robot\n#include <lineRobot.h>\n// The setup() function runs once when the robot is powered on or reset\nvoid setup() {\n\t// Comment lines with commands you do not want to use\n\t// To comment out a line, just add \"//\" at the beginning of the line\n\trobot.turnLeftAngle(45);\n\trobot.moveForwardDistance(20);\n\trobot.turnRight();\n\trobot.moveForwardDistance(20);\n\trobot.turnRight();\n\trobot.moveForwardDistance(20);\n\trobot.turnRight();\n\trobot.moveForwardDistance(20);\n}\n\n// The loop() function runs repeatedly after setup() has finished\nvoid loop() {\n\t// No instructions for continuous execution\n}"
+                "template":"// Include the library for controlling the robot\n#include <lineRobot.h>\n// The setup function runs once when the robot is powered on or reset\nvoid setup() {\n\t// Comment lines with commands you do not want to use\n\t// To comment out a line, just add \"//\" at the beginning of the line\n\trobot.turnLeftAngle(45);\n\trobot.moveForwardDistance(20);\n\trobot.turnRight();\n\trobot.moveForwardDistance(20);\n\trobot.turnRight();\n\trobot.moveForwardDistance(20);\n\trobot.turnRight();\n\trobot.moveForwardDistance(20);\n}\n\n// The loop function runs repeatedly after setup has finished\nvoid loop() {\n\t// No instructions for continuous execution\n}"
             },
             {
                 "str_id": "test_drive",
