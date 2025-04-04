@@ -1,11 +1,11 @@
 {
-    "fullCourseName":"Esp32 board developer course @ Metropolia",
-    "shortCourseName":"Esp32 board developer course @ Metropolia", 
-    "shortDescription":"Course on microcontroller programming designed by students at Metropolia University of applied science.",
-    "fullDescription":"Course on microcontroller programming designed by students at Metropolia University of applied science.",
-    "imageSmall":"https://github.com/autolab-fi/metropolia-esp32/blob/main/images/course-info/img-1.jpg?raw=true",
-    "imageBig":"https://github.com/autolab-fi/metropolia-esp32/blob/main/images/course-info/img-1.jpg?raw=true",
-    "workload":"0 hours",
-    "requirements":"Knowledge prerequisites for students before starting the course.",
-    "programmingLanguage": "cpp"
+  "fullCourseName": "ESP32 Board Developer Course @ Metropolia",
+  "shortCourseName": "ESP32 Developer @ Metropolia",
+  "shortDescription": "Learn C++ programming and robotics using an ESP32-based mobile robot. Designed by students at Metropolia University of Applied Sciences.",
+  "fullDescription": "This hands-on course, designed by students at Metropolia University of Applied Sciences, introduces you to microcontroller programming with the ESP32. You’ll start by writing your first lines of C++ code to control motors, LEDs, and read data from onboard sensors. As the course progresses, you'll take on the challenge of navigating a racing track using simple if statements. Then, you'll dive into more advanced algorithms with a PID regulator to ensure smooth and accurate line-following. The final stage takes you to a digital city with residential and industrial zones, where you'll use both a color sensor and a line-following sensor to explore and navigate autonomously.",
+  "imageSmall": "https://github.com/autolab-fi/line-robot-curriculum/blob/main/images/basic/image_640_360.jpg?raw=true",
+  "imageBig": "https://github.com/autolab-fi/line-robot-curriculum/blob/main/images/basic/image_1920_1080.jpg?raw=true",
+  "workload": "64 hours",
+  "requirements": "No prior programming or robotics knowledge required. Just bring curiosity and enthusiasm to build and control robots!",
+  "programmingLanguage": "cpp"
 }
