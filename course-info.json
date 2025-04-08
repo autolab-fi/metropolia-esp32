@@ -3,8 +3,8 @@
   "shortCourseName": "Introduction to Robotics",
   "shortDescription": "Learn C++ programming and robotics using an ESP32-based mobile robot.",
   "fullDescription": "This hands-on course,introduces you to microcontroller programming with the ESP32. You’ll start by writing your first lines of C++ code to control motors, LEDs, and read data from onboard sensors. As the course progresses, you'll take on the challenge of navigating a racing track using simple if statements. Then, you'll dive into more advanced algorithms with a PID regulator to ensure smooth and accurate line-following. The course is supported by an online remote laboratory, allowing you to test your code on real robots from anywhere.",
-  "imageSmall": "https://github.com/autolab-fi/line-robot-curriculum/blob/main/images/basic/image_640_360.jpg?raw=true",
-  "imageBig": "https://github.com/autolab-fi/line-robot-curriculum/blob/main/images/basic/image_1920_1080.jpg?raw=true",
+  "imageSmall": "https://github.com/pranavk-2003/metropolia-esp32/blob/main/images/course-info/Cropped.jpg?raw=true",
+  "imageBig": "https://github.com/pranavk-2003/metropolia-esp32/blob/main/images/course-info/Cropped.jpg?raw=true",
   "workload": "64 hours",
   "requirements": "No prior programming or robotics knowledge required. Just bring curiosity and enthusiasm to build and control robots!",
   "programmingLanguage": "cpp"
