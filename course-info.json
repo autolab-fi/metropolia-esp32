@@ -1,5 +1,5 @@
 {
-  "fullCourseName": "Introduction to Robotics – A Practical Approach to Robot Programming Using a Remote Laboratory",
+  "fullCourseName": "Introduction to Robotics – A Practical Approach to C++ Robot Programming Using an Online Remote Laboratory",
   "shortCourseName": "Introduction to Robotics @ Metropolia",
   "shortDescription": "Learn robotics and C++ programming by controlling an ESP32-based robot through a remote lab.",
   "fullDescription": "This hands-on course introduces you to microcontroller programming using the ESP32. You'll begin by writing C++ code to control motors, LEDs, and read data from onboard sensors. As you progress, you’ll develop logic to navigate a racing track using conditionals, and then move on to implementing advanced path-following algorithms like PID control for precise line-tracking. The course is powered by an online remote laboratory, giving you access to real robots located at Metropolia’s Karamalmi campus. You can test and refine your code in real time—no hardware required on your end.",
