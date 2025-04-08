@@ -1,11 +1,11 @@
 {
-  "fullCourseName": "Introduction to Robotics – A Practical Approach to Robot Programming Using an Online Remote Laboratory",
-  "shortCourseName": "Introduction to Robotics",
-  "shortDescription": "Learn C++ programming and robotics using an ESP32-based mobile robot.",
-  "fullDescription": "This hands-on course,introduces you to microcontroller programming with the ESP32. You’ll start by writing your first lines of C++ code to control motors, LEDs, and read data from onboard sensors. As the course progresses, you'll take on the challenge of navigating a racing track using simple if statements. Then, you'll dive into more advanced algorithms with a PID regulator to ensure smooth and accurate line-following. The course is supported by an online remote laboratory, allowing you to test your code on real robots from anywhere.",
+  "fullCourseName": "Introduction to Robotics – A Practical Approach to Robot Programming Using a Remote Laboratory",
+  "shortCourseName": "Introduction to Robotics @ Metropolia",
+  "shortDescription": "Learn robotics and C++ programming by controlling an ESP32-based robot through a remote lab.",
+  "fullDescription": "This hands-on course introduces you to microcontroller programming using the ESP32. You'll begin by writing C++ code to control motors, LEDs, and read data from onboard sensors. As you progress, you’ll develop logic to navigate a racing track using conditionals, and then move on to implementing advanced path-following algorithms like PID control for precise line-tracking. The course is powered by an online remote laboratory, giving you access to real robots located at Metropolia’s Karamalmi campus. You can test and refine your code in real time—no hardware required on your end.",
   "imageSmall": "https://github.com/pranavk-2003/metropolia-esp32/blob/main/images/course-info/Cropped.jpg?raw=true",
   "imageBig": "https://github.com/pranavk-2003/metropolia-esp32/blob/main/images/course-info/Cropped.jpg?raw=true",
   "workload": "64 hours",
-  "requirements": "No prior programming or robotics knowledge required. Just bring curiosity and enthusiasm to build and control robots!",
-  "programmingLanguage": "cpp"
+  "requirements": "Basic understanding of C++ is helpful but not required. Just bring your curiosity and enthusiasm to build and control real robots!",
+  "programmingLanguage": "C++"
 }
