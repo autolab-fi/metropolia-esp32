@@ -18,7 +18,7 @@ Line sensors rely on the principle of **infrared reflection** to differentiate b
 
 A **line-following robot** typically uses a row of **multiple IR sensors** to detect the black track. When the robot moves, the sensor readings guide it by detecting the line’s position relative to its current movement path. If the black line shifts toward the left or right, the robot can adjust its trajectory accordingly. The IR sensor array provides crucial feedback for navigation, ensuring smooth and precise movement along the path.
 
-![IR Sensor Working](https://github.com/pranavk-2003/line-robot-curriculum/blob/main/images/module_6/IR's.png)
+![IR Sensor Working](https://github.com/pranavk-2003/metropolia-esp32/blob/main/images/module_6/IR's.png)
 
 However, using IR sensors effectively requires overcoming several real-world challenges. **Surface texture variations** can affect reflection, meaning not all black surfaces absorb IR light in the same way. **Ambient light interference** from external sources like the sun or bright LEDs may cause fluctuations in sensor readings, leading to false detections. Another issue is **sensor calibration**, as different sensors may produce slightly different readings, requiring **threshold adjustments** to ensure accurate detection. **Noise in sensor data** is another challenge that must be managed using filtering techniques. To achieve optimal performance, the system needs to be tested in various conditions, and sensor thresholds should be fine-tuned.
 
