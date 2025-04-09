@@ -1,7 +1,7 @@
 {
   "fullCourseName": "Introduction to Mobile Robotics @ Metropolia",
   "shortCourseName": "Introduction to Mobile Robotics @ Metropolia",
-  "shortDescription": "Learn robotics and C++ programming by controlling an ESP32-based robot through a remote lab. Master motor control, sensor reading, and path-following algorithms like PID—all online.",
+  "shortDescription": "Learn robotics and C++ programming by controlling an ESP32-based robot through a remote lab. Master motor control, sensor reading, and path-following algorithms like PID",
   "fullDescription": "This hands-on course introduces you to microcontroller programming using the ESP32. You'll begin by writing C++ code to control motors, LEDs, and read data from onboard sensors. As you progress, you’ll develop logic to navigate a racing track using conditionals, and then move on to implementing advanced path-following algorithms like PID control for precise line-tracking. The course is powered by an online remote laboratory, giving you access to real robots located at Metropolia’s Karamalmi campus. You can test and refine your code in real time—no hardware required on your end.",
   "imageSmall": "https://github.com/autolab-fi/metropolia-esp32/blob/main/images/course-info/metropolia-line-preview-640x360.png?raw=true",
   "imageBig": "https://github.com/autolab-fi/metropolia-esp32/blob/main/images/course-info/metropolia-line-1920x1080.png?raw=true",
