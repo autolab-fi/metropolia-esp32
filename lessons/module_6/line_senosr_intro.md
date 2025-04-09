@@ -63,7 +63,7 @@ Now that you understand how the IR sensor detects black and white surfaces, try 
 
 For better visualization of the logic flow, refer to the flowchart below:
 
-![Flowchart](https://github.com/pranavk-2003/line-robot-curriculum/blob/main/images/module_6/FC_module_6.png)
+![Flowchart](https://github.com/pranavk-2003/metropolia-esp32/blob/main/images/module_6/FC_module_6.png)
 
 By modifying the `blackDetected` flag, you can fine-tune the detection mechanism and improve sensor response.
 
