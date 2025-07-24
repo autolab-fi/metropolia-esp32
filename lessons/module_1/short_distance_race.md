@@ -1,31 +1,44 @@
----
-index: 3
-module: module_1
-task: short_distance_race
-previous: license_to_drive
-next: maneuvering
----
-# Lesson 3. Short distance race
+# Lesson 3: Short Range Traverse — Approaching the Sample Site on Mars
 
 ## Objective
-Explore functions for moving the robot a specific distance.
 
-## Introduction
-In the past two lessons, we've utilized only one function from the lineRobot library. It's now time to introduce additional functions for controlling the robot: moving backward and moving forward, where the parameter is not the number of seconds but the distance.
+Learn to use functions that control the rover's movement by specifying the distance to move forward or backward, essential for precise navigation to sample collection sites.
 
-## Theory
+## Mission Briefing
 
-In the previous lesson, you gained insight into **functions** and **parameters**. You used the **moveForwardSeconds(seconds)** function, with the parameter representing the duration of robot movement in seconds. However, for precise control over the robot's position on the map, we need functions that allow movement based on distance in centimeters.
+Your Mars rover has successfully passed its pilot certification and is now tasked with driving to a nearby **Sample Depot** zone, simulating a Martian rock sample collection site. To safely approach this area without overshooting or collision, you will program the rover to move exact distances—backward and forward—using distance-based movement commands.
 
-**robot.moveForwardDistance(dist)** - A function for moving the robot forward by the number of centimeters specified by the parameter **dist**.
-**robot.moveBackwardDistance(dist)** -  A function for moving the robot backward by the number of centimeters specified by the parameter **dist**.
+## Scientific Context
 
-Robot directions
+Accurate positioning is critical for the rover to collect scientific samples effectively. In real Mars missions, rovers must navigate narrow paths and stop precisely near geological features. Being able to command movement by distances rather than approximate times increases landing site safety and mission success.
+
+## Programming Theory
+
+Previously, you learned to move the rover using time-based commands:
+
+```cpp
+robot.moveForwardSeconds(seconds);
+```
+
+Now, you will use new functions that accept a **distance** parameter (in centimeters):
+
+- `robot.moveForwardDistance(dist)`  
+  Moves the rover forward by the distance `dist` centimeters.
+
+- `robot.moveBackwardDistance(dist)`  
+  Moves the rover backward by the distance `dist` centimeters.
+
+These functions provide improved control for navigating complex Martian terrain.
+
 ![robot_directions](https://github.com/autolab-fi/line-robot-curriculum/blob/main/images/module_1/directions.png?raw=true)
 
-## Assignment 
-Write a program for the robot to move **backward 35** centimeters and then **forward 20** centimeters. Good luck!
+Write a program that commands the rover to:
 
-## Conclusion
-Congratulations! You have gained knowledge about two crucial functions of the library that will prove valuable in the upcoming lessons.
+1. Move **backward 35 centimeters** to back away from the initial docking position.
+2. Then move **forward 20 centimeters** advancing towards the sample collection site.
 
+## Mission Debrief
+
+Excellent work! You’ve now mastered movement commands based on precise distances, a valuable skill for navigating the Martian surface. These functions will be essential as you explore more challenging zones like the **Crater** or **Rock Field** in upcoming lessons.
+
+Ready for the next challenge? Your Martian adventure continues!

@@ -1,32 +1,44 @@
----
-index: 5
-module: module_1 
-task: long_distance_race
-previous: maneuvering
-next: draw
----
-# Lesson 5. Long distance race
+# Lesson 5: Ridge Ascent — Programming the Rover's Trajectory Around the Crater
 
 ## Objective
-Write a program with a specific sequence of movements.
 
-## Introduction
-Now that you know how to control the robot in four directions, this lesson requires you to craft a sequence of commands to guide the robot along a predefined route.
+Write a sequence of movement commands to guide the Mars rover along a predefined trajectory, simulating sample collection around the crater.
 
-## Theory
-Throughout the preceding lessons, you've been creating programs. Let's define what a program is: a program is an ordered sequence of commands. These commands are executed by a designated executor, which, in our case, is the robot.
+## Mission Briefing
 
-Each function within the **lineRobot.h** library executes a sequence of commands specific to that function. In the upcoming lessons, you'll advance to writing your own functions using the basic functions of the Arduino Wiring programming language.
+Your rover has successfully navigated the **Crater** zone's perimeter and is now tasked with a more complex navigation mission: program it to follow a precise trajectory simulating the collection of geological samples from key locations around the crater rim.
 
-## Assignment 
-Write a program for the robot to follow the route represented in the image.
+This mission requires chaining multiple commands to control forward movement and turning, coordinating to mimic a real Mars rover traversing varied terrain and obstacles on its scientific route.
 
-![trajectory](https://github.com/autolab-fi/line-robot-curriculum/blob/main/images/module_1/trajectory.png?raw=true)
+## Scientific Context
 
-You can refresh your memory of the library functions by revisiting the previous lessons.
+Rovers on Mars rely on detailed command sequences to navigate safely and efficiently. Each movement contributes to data collection for geological and environmental analysis. Programming accurate trajectories is crucial to avoid hazards and ensure scientific goals are met without manual intervention.
 
-## Hint
-Try pressing Reset button before starting the assignment, it will put robot in favorable position.
+## Programming Theory
 
-## Conclusion
-You are awesome! You've gained insight into the concept of a program and its executor. In the next lesson, you'll learn how to control the robot's speed.
+A **program** is an ordered list of instructions executed by the rover. You will combine previously learned functions from the **lineRobot.h** library — moving forward or backward by specified distances, and turning right or left — into a single program to follow the given path.
+
+Functions recap:
+
+- `robot.moveForwardDistance(dist)` — moves forward by `dist` centimeters.
+- `robot.turnRight()` — turns right in place.
+- `robot.turnLeft()` — turns left in place.
+
+Your program should sequence these commands to draw the rover's path as shown in the trajectory image.
+
+## Visual Reference
+
+![Trajectory](https://github.com/autolab-fi/line-robot-curriculum/blob/main/images/module_1/trajectory)
+
+Write a program that moves the rover along the route in the image, implementing these steps:
+
+- Move forward and turn to navigate the route’s bends.
+- Follow the pattern precisely as a sample collection route around the crater.
+
+## Mission Debrief
+
+Excellent work! By programming a complex sequence of movements, you’ve taken a crucial step toward full rover autonomy. This prepares you for controlling the rover over more challenging Martian terrain and enhances your understanding of how real missions script rover expeditions.
+
+Next, you will learn about controlling the rover’s speed, vital for terrain adaptation and energy efficiency.
+
+Good luck with your continued Mars exploration!

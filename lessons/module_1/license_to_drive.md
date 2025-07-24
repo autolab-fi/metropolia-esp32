@@ -1,31 +1,43 @@
----
-index: 2
-module: module_1
-task: license_to_drive
-previous: test_drive
-next: short_distance_race
----
-# Lesson 2. License to drive
+# Lesson 2: Pilot's Qualification — Maneuver Certification on Mars
 
 ## Objective
-Modify function parameter.
 
-## Introduction
-In this lesson, we are granting you the driver's license. Today, you will be writing the program on your own without the instructor's help. However, first, let's cover some theory. We will discuss one of the most important concepts in programming: functions.
+Write your first independent program to command the Mars rover to drive forward for a specified time, practicing function parameters and certifying your basic piloting skills.
 
+## Mission Briefing
 
-##  Theory
-In the previous lesson, we used the **lineRobot.h** library, and we will continue using it in the future. It contains functions for controlling the robot, allowing us to easily set our robot in motion.
+Welcome back, Mars explorer! Having tested your rover’s basic movement in the **Garage**, it's time to earn your **Pilot’s License**. Your mission: write the code yourself to drive the NAME OF THE ROVER rover forward for **5 seconds**. This solo exercise certifies your ability to operate the rover safely and reliably before venturing further onto the Martian surface.
 
-**Functions** are named blocks of code that perform specific tasks. This means that when you invoke a function, it performs a specific action, such as multiplying two numbers or displaying a message on the console. Some functions have **parameters**; for example, the function **function(param1, param2)** has two parameters, param1 and param2. Parameters allow you to pass data into the function and work with it. In future lessons, you will write your own functions for controlling the robot.
+## Scientific Context
 
-![verfification](https://github.com/autolab-fi/line-robot-curriculum/blob/main/images/module_1/function.png?raw=true)
+In real Mars missions, rover operators often write and test small movement commands to verify each subsystem’s functionality. Mastering these simple commands ensures smooth navigation when exploring complex zones like craters, rock fields, and ice patches.
 
-We have already used the function **robot.moveForwardSeconds(seconds)**. This function makes the robot move forward, and the parameter **seconds** sets the duration of the movement in seconds.
+## Programming Theory
 
-## Assignment 
-Write a program for the robot to make it drive straight for 5 seconds. You can refer back to the previous lesson to recall how to set the robot in motion. Good luck!
+You will continue using the **lineRobot.h** library to control the rover. It provides **functions** — reusable blocks of code that perform specific tasks.
 
-## Conclusion
-Congratulations! You have written your own program for robot movement! In the next lesson, we will explore the robot's movement in different directions using the lineRobot.h library.
+- A **function** can be called by its name to perform an action (like moving forward).
+- Functions may have **parameters**, which are values you pass to customize the function's behavior.
+  
+For example:
 
+```cpp
+robot.moveForwardSeconds(seconds);
+```
+
+Here, `seconds` is a parameter telling the robot how long to move forward.
+
+Understanding and modifying function parameters is key to making your rover follow precise paths on Mars.
+
+## Your Task
+
+Write a program where the rover moves **forward for 5 seconds**.
+
+Hints:  
+- Look back to Lesson 1 for guidance on how to call the move function.  
+
+## Mission Debrief
+
+Congratulations, pilot! Writing this simple program on your own proves you’ve mastered controlling the rover’s basic forward motion. This is an important step toward exploring the surface of Mars autonomously. In the next lesson, you will expand your skills by commanding the rover to perform turns and more complex maneuvers.
+
+Good luck on your journey — the Red Planet awaits!

@@ -1,33 +1,43 @@
----
-index: 4
-module: module_1 
-task: maneuvering
-previous: short_distance_race
-next: long_distance_race
----
-# Lesson 4. Maneuvering
+# Lesson 4: Crater Maneuvers — Orientation Adjustment on Mars
 
 ## Objective
-Learn about functions for turning the robot right and left.
 
-## Introduction
-You have successfully learned how to control the robot's forward and backward movements, but this is not sufficient for free movement across the field. In this lesson, you will learn functions for turning the robot right and left.
+Learn how to command your Mars rover to turn right and left in place, enabling precise orientation adjustments essential for scanning and maneuvering in the Martian crater environment.
 
-## Theory
-You already know how to control the robot for straight movement; now, let's delve into turning the robot right and left to facilitate movement in four directions.
+## Mission Briefing
 
-Below, the image represents the possible directions of the robot's movement.
+Your rover has arrived at the edge of the **Crater** zone, a tricky terrain where accurate orientation is crucial to safely scan and navigate the area. Before conducting scientific scans, the NAME OF THE ROVER must correctly align itself by turning right and left on the spot to face target points.
+
+Mastering these turning commands allows the rover to pivot efficiently between different directions, preparing it to explore the crater's secrets.
+
+## Scientific Context
+
+On Mars, rovers often need to turn precisely to aim instruments or change direction without large translations, conserving energy and avoiding hazardous terrain. Turning in place helps the rover align for imaging, sampling, and communication tasks.
+
+## Programming Theory
+
+Your rover can turn in place using two simple commands from the **lineRobot.h** library:
+
+- `robot.turnRight();` — Rotates the rover about its center to the right.
+- `robot.turnLeft();` — Rotates the rover about its center to the left.
+
+These functions do not require parameters; calling them once initiates a predefined turn, often by a fixed angle (like 90 degrees), allowing precise orientation adjustments.
+
+Here's a diagram showing possible rover orientations after turns:
 
 ![robot_directions](https://github.com/autolab-fi/line-robot-curriculum/blob/main/images/module_1/directions.png?raw=true)
 
-**robot.turnRight()** - Function for turning right.
+Write a program where the rover:
 
-**robot.turnLeft()** - Function for turning left.
+1. Turns **right** once (pivot clockwise).
+2. Turns **left** once (pivot counterclockwise).
+3. Turns **left** again (facing the new direction after two left turns).
 
-As you can see, the turning functions don't require any parameters. It's sufficient to call them, and the robot will turn in place in the desired direction.
+This sequence simulates scanning around the crater by changing orientation efficiently.
 
-## Assignment 
-Write code for the robot to **turn right, then turn left, and finally turn left again**.
 
-## Conclusion
-Congratulations! Now you can move the robot in four directions! This skill will prove very useful for you in the next lesson.
+## Mission Debrief
+
+Well done! By controlling your rover's turning maneuvers, you have given it the ability to orient itself in four directions around the crater. This control is essential for complex operations like scanning, obstacle avoidance, and maneuvering in tight Martian terrain.
+
+Get ready for more advanced movement control in the next lesson as you continue your Mars exploration mission!
