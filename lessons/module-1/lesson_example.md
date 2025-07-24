@@ -1,46 +1,47 @@
-# Lesson 1: Example of the Lesson
+---
+index: 0  
+module: module_1  
+task: mars_draw  
+previous: None  
+next: test_drive  
+---
 
-## Objective
-Become familiar with the basic styling of Markdown files for lessons.
+# Mission: Draw on Mars
 
-## Introduction
-Markdown is a lightweight markup language with plain text formatting syntax. It is designed to be easy to read and write, and it's often used to format readme files, write messages in online discussion forums, and create rich text using a plain text editor.
+## 🚀 Welcome to the Mars Rover Sandbox
 
-## Theory
+Greetings, Cadet! Your Martian adventure begins now. In this space mission, you’ll take control of a robot rover as it navigates the *surface of Mars*! Test your code, experiment with rover movements, and visualize your rover’s path—just like leaving tracks in Martian dust. Activate **Verify** to see a glowing blue trail behind the rover for 20 Mars seconds.
 
-### Example of an Image in Text:
+## Mars Task
 
-![robot](https://github.com/autolab-fi/metropolia-esp32/blob/main/images/course-info/img-1.jpg?raw=true)
+> **Objective:**  
+> Program your rover to explore a mysterious square formation, rumored to be signals from an ancient Martian civilization!  
+> Can you make your rover trace a perfect Martian square?
 
-### Example of List Formatting:
-1. Examples of different fonts and unordered lists:
-    - *Italic*
-    - **Bold**
-    - `Code`
-    - ***Bold Italic***
-    - ***`Bold Italic Code`***
-    - ...
-2. Example code block:
-    ```
-    print("Hello, world!")
-    ```
-    Or specify a language to highlight syntax:
-    ```cpp
-    #include <iostream>
-    int main() {
-      std::cout << "Hello, world!" << std::endl;
-      return 0;
-    }
-    ```
-3. Example of a Table:
-    | Header 1   | Header 2   | Header 3   |
-    |------------|------------|------------|
-    | Cell 1     | Cell 2     | Cell 3     |
-    | Cell 4     | Cell 5     | Cell 6     |
-    | Cell 7     | Cell 8     | Cell 9     |
+## Martian Rover Code Example
 
-## Assignment
-There is no assignment in this lesson.
+```cpp
+#include 
+void setup(){
+   // Start your rover at a 45° angle—Mars style!
+   robot.turnLeftAngle(45);
+   robot.moveForwardDistance(20);
+   robot.turnRight();
+   robot.moveForwardDistance(20);
+   robot.turnRight();
+   robot.moveForwardDistance(20);
+   robot.turnRight();
+   robot.moveForwardDistance(20);
+}
+void loop(){
+}
+```
 
-## Conclusion
-For more information, you can refer to: [Markdown Guide](https://www.markdownguide.org/basic-syntax/)
+## 🌌 Mission Hints
+
+- The red Martian sand will reveal the **path of your rover** in the Output section.
+- Get creative! Try drawing new shapes the Martians may like.
+- Remember: each movement leaves a mark on Mars, so plan your turns carefully.
+
+Enjoy your journey across the *Martian sandbox*. The fate of the expedition awaits your code!
+
