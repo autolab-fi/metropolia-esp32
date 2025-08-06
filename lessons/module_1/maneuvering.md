@@ -8,26 +8,26 @@ next: long_distance_race
 # Lesson 4. Maneuvering
 
 ## Objective
-Learn about functions for turning the robot right and left.
+Learn about functions for turning the rover right and left.
 
 ## Introduction
-You have successfully learned how to control the robot's forward and backward movements, but this is not sufficient for free movement across the field. In this lesson, you will learn functions for turning the robot right and left.
+You have successfully learned how to control the rover's forward and backward movements, but this is not sufficient for free movement across the field. In this lesson, you will learn functions for turning the rover right and left.
 
 ## Theory
-You already know how to control the robot for straight movement; now, let's delve into turning the robot right and left to facilitate movement in four directions.
+You already know how to control the rover for straight movement; now, let's delve into turning the rover right and left to facilitate movement in four directions.
 
-Below, the image represents the possible directions of the robot's movement.
+Below, the image represents the possible directions of the rover's movement.
 
 ![robot_directions](https://github.com/autolab-fi/line-robot-curriculum/blob/main/images/module_1/directions.png?raw=true)
 
-**robot.turnRight()** - Function for turning right.
+**rover.turnRight()** - Function for turning right.
 
-**robot.turnLeft()** - Function for turning left.
+**rover.turnLeft()** - Function for turning left.
 
-As you can see, the turning functions don't require any parameters. It's sufficient to call them, and the robot will turn in place in the desired direction.
+As you can see, the turning functions don't require any parameters. It's sufficient to call them, and the rover will turn in place in the desired direction.
 
 ## Assignment 
-Write code for the robot to **turn right, then turn left, and finally turn left again**.
+Write code for the rover to **turn right, then turn left, and finally turn left again**.
 
 ## Conclusion
-Congratulations! Now you can move the robot in four directions! This skill will prove very useful for you in the next lesson.
+Congratulations! Now you can move the rover in four directions! This skill will prove very useful for you in the next lesson.

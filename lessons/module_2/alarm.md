@@ -26,18 +26,19 @@ An LED has two contacts - anode and cathode. The anode is the longer one and it 
 
 ### LED Blink
 
-You already know how to turn on an LED using the **digitalWrite()** function. In this lesson, let's write a more advanced program. We'll not only turn on the LEDs on the robot but also turn them off by sending a low logic signal to the pin. To make the LEDs blink, you need to create pauses between switching signals on the LED pins so that the microcontroller doesn't execute them instantly. Самый простой способ сделать паузу в программе - это функция **delay**. 
+You already know how to turn on an LED using the **digitalWrite()** function. In this lesson, let's write a more advanced program. We'll not only turn on the LEDs on the robot but also turn them off by sending a low logic signal to the pin. To make the LEDs blink, you need to create pauses between switching signals on the LED pins so that the microcontroller doesn't execute them instantly. The easiest way to make a pause in the program is to use **delay** function.
+
 
 The **delay(milliseconds)** function pauses the program before executing the next command. This function takes a number as an argument, which represents the duration of the pause in milliseconds.
 
 Example:
 
 ```cpp
-#include <lineRobot.h>
+#include <rover.h>
 void setup(){
-    robot.moveForwardDistance(20);
+    rover.moveForwardDistance(20);
     delay(3000);
-    robot.moveBackwardDistance(20);
+    rover.moveBackwardDistance(20);
 }
 void loop(){
 

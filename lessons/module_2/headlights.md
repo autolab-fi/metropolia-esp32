@@ -11,7 +11,7 @@ next: alarm
 Learn about GPIO.
 
 ## Introduction
-In this lesson, you will learn about a basic concept for microcontrollers - GPIO, and explore how it works using LEDs installed on the robot!
+In this lesson, you will learn about a basic concept for microcontrollers - GPIO, and explore how it works using LEDs installed on the rover!
 
 ## Theory
 ### What is GPIO?

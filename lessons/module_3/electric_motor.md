@@ -39,15 +39,15 @@ Voltage of different polarities is applied to the brushes, creating magnetic fie
 
 ### Gearbox in Electric Motors
 
-An electric motor can also be equipped with a gearbox, which transfers the rotational motion from the motor shaft to the mechanism. A gearbox can increase the maximum torque from the motor shaft and reduce the rotational speed. In the case of a line-following robot, the gearbox increases torque to allow the robot to move despite its weight and to overcome obstacles. A gearbox typically consists of a set of gears. You can see the internal structure of a gearbox in the photo below:
+An electric motor can also be equipped with a gearbox, which transfers the rotational motion from the motor shaft to the mechanism. A gearbox can increase the maximum torque from the motor shaft and reduce the rotational speed. In the case of a line-following robot, the gearbox increases torque to allow the rover to move despite its weight and to overcome obstacles. A gearbox typically consists of a set of gears. You can see the internal structure of a gearbox in the photo below:
 
 ![image](https://github.com/autolab-fi/line-robot-curriculum/blob/main/images/module_3/small_size_gearbox.jpg?raw=True)
 
 
-For example, the robot on the stage uses motors with speed 178 RPM (Revolutions Per Minute).
+For example, the rover on the stage uses motors with speed 178 RPM (Revolutions Per Minute).
 
 ## Assignment
-Let's practice more with robot movement: write a program for the robot to reach a point on the map. However, remember that you will not be able to use the built-in robot movement functions. The functions: **moveForwardDistance**, **moveBackwardDistance**, **turnLeft**, **turnRight**, **moveForwardSeconds**, and **moveBackwardSeconds** will not work. 
+Let's practice more with robot movement: write a program for the rover to reach a point on the map. However, remember that you will not be able to use the built-in rover movement functions. The functions: **moveForwardDistance**, **moveBackwardDistance**, **turnLeft**, **turnRight**, **moveForwardSeconds**, and **moveBackwardSeconds** will not work. 
 
 ![image](https://github.com/autolab-fi/line-robot-curriculum/blob/main/images/module_3/finish_point.jpg?raw=True)
 

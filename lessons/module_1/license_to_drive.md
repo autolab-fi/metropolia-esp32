@@ -15,17 +15,17 @@ In this lesson, we are granting you the driver's license. Today, you will be wri
 
 
 ##  Theory
-In the previous lesson, we used the **lineRobot.h** library, and we will continue using it in the future. It contains functions for controlling the robot, allowing us to easily set our robot in motion.
+In the previous lesson, we used the **rover.h** library, and we will continue using it in the future. It contains functions for controlling the robot, allowing us to easily set our rover in motion.
 
-**Functions** are named blocks of code that perform specific tasks. This means that when you invoke a function, it performs a specific action, such as multiplying two numbers or displaying a message on the console. Some functions have **parameters**; for example, the function **function(param1, param2)** has two parameters, param1 and param2. Parameters allow you to pass data into the function and work with it. In future lessons, you will write your own functions for controlling the robot.
+**Functions** are named blocks of code that perform specific tasks. This means that when you invoke a function, it performs a specific action, such as multiplying two numbers or displaying a message on the console. Some functions have **parameters**; for example, the function **function(param1, param2)** has two parameters, param1 and param2. Parameters allow you to pass data into the function and work with it. In future lessons, you will write your own functions for controlling the rover.
 
 ![verfification](https://github.com/autolab-fi/line-robot-curriculum/blob/main/images/module_1/function.png?raw=true)
 
-We have already used the function **robot.moveForwardSeconds(seconds)**. This function makes the robot move forward, and the parameter **seconds** sets the duration of the movement in seconds.
+We have already used the function **rover.moveForwardSeconds(seconds)**. This function makes the rover move forward, and the parameter **seconds** sets the duration of the movement in seconds.
 
 ## Assignment 
-Write a program for the robot to make it drive straight for 5 seconds. You can refer back to the previous lesson to recall how to set the robot in motion. Good luck!
+Write a program for the rover to make it drive straight for 5 seconds. You can refer back to the previous lesson to recall how to set the rover in motion. Good luck!
 
 ## Conclusion
-Congratulations! You have written your own program for robot movement! In the next lesson, we will explore the robot's movement in different directions using the lineRobot.h library.
+Congratulations! You have written your own program for rover movement! In the next lesson, we will explore the robot's movement in different directions using the rover.h library.
 
