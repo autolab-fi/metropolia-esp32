@@ -1,33 +1,55 @@
+# Mars Rover Mission Simulator
+
+## Lesson 4: Maneuvering
+
+### Objective
+
+Learn about functions for turning the rover right and left.
+
+### Introduction
+
+You've successfully learned how to control the rover's forward and backward movements, but that's not enough for free movement across the Martian terrain. In this lesson, you will learn the functions for turning the rover right and left.
+
 ---
-index: 4
-module: module_1 
-task: maneuvering
-previous: short_distance_race
-next: long_distance_race
+
+### Theory
+
+You already know how to command the rover's straight movement; now let's delve into turning the rover right and left to facilitate movement in four directions.
+
+The image below represents the possible directions of the rover's movement.
+
+`robot.turnRight()`: A function for turning the rover **right**.
+
+`robot.turnLeft()`: A function for turning the rover **left**.
+
+As you can see, these turning functions don't require any parameters. It's sufficient to call them, and the rover will turn in place in the desired direction.
+
 ---
-# Lesson 4. Maneuvering
 
-## Objective
-Learn about functions for turning the robot right and left.
+### Real Mission Insight: A Rover's First Turn
 
-## Introduction
-You have successfully learned how to control the robot's forward and backward movements, but this is not sufficient for free movement across the field. In this lesson, you will learn functions for turning the robot right and left.
+The first-ever turn executed by a rover on Mars was by the **Sojourner rover** in 1997. After driving off its landing ramp, it performed a small turn to test its steering. This first turn was a critical moment, confirming that the rover's wheels and steering mechanisms were operating correctly after the long journey and challenging landing.
 
-## Theory
-You already know how to control the robot for straight movement; now, let's delve into turning the robot right and left to facilitate movement in four directions.
+---
 
-Below, the image represents the possible directions of the robot's movement.
+### Assignment
 
-![robot_directions](https://github.com/autolab-fi/line-robot-curriculum/blob/main/images/module_1/directions.png?raw=true)
+Write code for the rover to **turn right, then turn left, and finally turn left again**.
 
-**robot.turnRight()** - Function for turning right.
+```cpp
+#include <rover.h>
 
-**robot.turnLeft()** - Function for turning left.
+void setup() {
+    // Your code goes here!
+}
 
-As you can see, the turning functions don't require any parameters. It's sufficient to call them, and the robot will turn in place in the desired direction.
+void loop() {
+    // The loop function is not used for this exercise
+}
+```
 
-## Assignment 
-Write code for the robot to **turn right, then turn left, and finally turn left again**.
+---
 
-## Conclusion
-Congratulations! Now you can move the robot in four directions! This skill will prove very useful for you in the next lesson.
+### Conclusion
+
+Congratulations\! Now you can move the rover in four directions\! This skill will prove very useful in the next lesson as you tackle more complex navigation challenges.

@@ -1,39 +1,49 @@
+# Mars Rover Mission Simulator
+
+## Lesson 1: Test Drive
+
+### Objective
+
+Get started with your Mars rover and set it in motion.
+
+### Introduction
+
+In this lesson, you will learn how to command your rover's first movement across the Martian surface. It's not a complex task; all you need is curiosity and precision, just like real mission planners.
+
+Behold the mighty rover, your companion in exploring the Red Planet.
+
+Now, let's test the rover by writing a program for forward movement. This simple command mimics the initial "waking up" sequence for a newly deployed rover, ensuring all systems are go.
+
 ---
-index: 1
-module: module_1
-task: test_drive
-previous: draw
-next: license_to_drive
----
-# Lesson 1. Test drive
 
-## Objective
-Get started with the robot and set it in motion promptly.
+### Instructions
 
-## Introduction
-In this lesson, you will learn how to initiate movement in the robot. It's not a complex task; all you need is a strong desire and perseverance.
+1.  Copy the code provided below and paste it into the code editor.
 
-Behold the mighty robot who will assist you in learning.
+<!-- end list -->
 
-![robot](https://github.com/autolab-fi/line-robot-curriculum/blob/main/images/module_1/robot.png?raw=true)
-
-Now let's test the robot by writing a program for forward movement.
-
-## Instructions
-1. Copy the code provided below and paste it into the code editor.
-```
-#include <lineRobot.h>
+```cpp
+#include <rover.h>
 
 void setup() {
-  robot.moveForwardSeconds(3);
+    // Command the rover to move forward for 3 seconds
+    robot.moveForwardSeconds(3);
 }
 
-void loop(){
+void loop() {
+    // The loop function is not used for this simple command
 }
 ```
-2. Upload the program to the robot.
-3. Observe the program execution results in the output and on the video feed.
 
+2.  Upload the program to the rover simulator.
+3.  Observe the program execution results in the output and on the video feed.
 
-## Conclusion
-Wasn't hard, was it? A tiny code though a giant leap towards building your robotics skillset. You have successfully acquired the skill to make the robot move. Now, you can proceed to the next lesson!
+---
+
+### Real Mission Insight: The First Drive
+
+The **Curiosity rover's** first test drive on Mars occurred on August 22, 2012, just 16 days after landing. The rover moved about 4.5 meters (15 feet) and then turned. This initial movement, called a "shakeout," was crucial for checking the rover's mobility system and ensuring it was ready for its long mission.
+
+### Conclusion
+
+Wasn't hard, was it? A tiny code, though a giant leap toward building your robotics skillset. You have successfully acquired the skill to make the rover move. Now, you can proceed to the next lesson\!
