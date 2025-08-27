@@ -62,7 +62,7 @@ void moveRobotForwardBackward(int secondsMove, int secondsPause){
 }
 ```
 
-The **moveRobotForwardBackward** function takes the parameter **secondsMove**, which tells the robot how long to move forward and backward, and the parameter **secondsPause**, which specifies the pause before the robot moves backward.
+The **moveRobotForwardBackward** function takes the parameter **secondsMove**, which tells the robot how long to move forward and backward, and the parameter **secondsPause**, which specifies the pause before the rover moves backward.
 
 How to use this function:
 ```cpp
