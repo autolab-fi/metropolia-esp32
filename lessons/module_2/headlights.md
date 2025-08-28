@@ -1,47 +1,64 @@
+### **Lesson 6: Rover Headlights**
+
+## **Lesson objective**
+
+Learn about GPIO, a foundational concept for rover control.
+
+## **Introduction**
+
+In this lesson, you will learn about a basic yet critical concept for microcontrollers—**General Purpose Input/Output (GPIO)**. We will explore how it works by controlling the LEDs on our rover, a function analogous to the lighting systems used by rovers on Mars to aid in navigation and data collection.
+
 ---
-index: 6
-module: module_2
-task: headlights
-previous: long_distance_race
-next: alarm
+
+## **Theory**
+
+### **What is GPIO?**
+
+**GPIO** stands for "General Purpose Input/Output.".It is the primary interface through which a microcontroller, the "brain" of our rover, interacts with external devices in its environment. GPIO pins can be configured to either **read signals** from external sensors (acting as inputs) or **send signals** to control devices like motors and lights (acting as outputs).
+
+The signal for a GPIO pin is a voltage. A **low signal** is always **0 volts**, but the voltage for a **high signal** (**logical high**) varies. Our rover uses an **ESP32** board, where the logical high level is **3.3 volts**. In contrast, the flight computers on NASA's Mars rovers, such as the **Perseverance rover**, are custom-built to withstand the harsh Martian environment, and their logic levels are designed with extreme precision to ensure mission success. GPIO pins on a rover's flight computer can be connected to various components, including:
+
+- **Navigation sensors:** To determine the rover's position and orientation.
+- **Scientific instruments:** For tasks like analyzing rock samples.
+- **Motors:** For driving the wheels and operating robotic arms.
+- **Lighting systems:** For illuminating areas during nighttime operations or in low-light conditions, much like the lights on the Mars Science Laboratory (MSL) rover, **Curiosity**, which uses LEDs to light its workspace.
+
+### **Controlling an LED**
+
+An LED is a semiconductor device that emits light when an electric current passes through it. The LEDs on our rover act as miniature versions of the hazard avoidance lights on NASA's rovers, which are essential for navigating treacherous terrain in low light. To control an LED with a GPIO pin, you must first configure the pin's operating mode, then set its logical signal level.
+
+### **`pinMode()`**
+
+The **`pinMode(pin, mode)`** function sets the operating mode for a specific GPIO pin. This is a fundamental step, ensuring the microcontroller knows whether to expect a signal from the pin or to send one out.
+
+- **`pin`**: The number of the GPIO pin.
+- **`mode`**: The operational mode you want to set, either **`INPUT`** to read a signal or **`OUTPUT`** to write a signal.
+
+For example, to control a light, the pin must be set to `OUTPUT` mode so the microcontroller can send the electrical signal to turn the light on.
+
+### **`digitalWrite()`**
+
+The **`digitalWrite(pin, value)`** function is used to set a high or low logical voltage level on a pin configured as an output.
+
+- **`pin`**: The GPIO pin number to control.
+- **`value`**: The logical voltage level to set. You can provide either **`HIGH`** for a high voltage level or **`LOW`** for a low voltage level.
+
+Using `digitalWrite(pin, HIGH)` would supply power, turning on a headlight, while `digitalWrite(pin, LOW)` would cut the power, turning it off. This simple command is the basis for complex lighting sequences used to light up the Martian surface for imaging.
+
 ---
-# Lesson 6: Headlights
 
-## Lesson objective
-Learn about GPIO.
+## **Assignment**
 
-## Introduction
-In this lesson, you will learn about a basic concept for microcontrollers - GPIO, and explore how it works using LEDs installed on the rover!
+Write a program that turns on two LEDs on the rover. The LEDs are connected to pins defined in the code as **`ledPin1`** and **`ledPin2`**. Use these predefined pin names in your program.
 
-## Theory
-### What is GPIO?
-GPIO stands for "General Purpose Input/Output." It's an interface for the microcontroller to interact with external devices. GPIO pins allow us to read signals from a pin or write signals to a device. The signal for GPIO is voltage. 
+---
 
-![image](https://github.com/autolab-fi/line-robot-curriculum/blob/main/images/module_2/headlights_2.png?raw=True)
+## **Hint**
 
-Today, we'll only discuss signals of the logical high and logical low types: a low signal is 0 volts, while a high signal can have different values depending on the platform. For example, on Arduino Uno, Mega, Nano, this value will be 5 volts, but our robot uses an ESP32 board, where the logical high level is 3.3 volts. With GPIO pins, we can connect various devices, including:
+You need to set the correct operating mode for the pin and send a signal to it. Use the **`pinMode()`** function to set the required operating mode for each pin, and use **`digitalWrite()`** to send a signal to each pin.
 
-- Buttons/switches
-- Sensors
-- LEDs
-- Motors
-- Displays
-- etc.
+---
 
-### Controlling LED
-So in this lesson, we're looking at an LED, which is a semiconductor device that emits light when an electric current passes through it. An LED is quite an interesting thing, and we can try to use GPIO on our board using it as an example. We can set the logical signal level using the **digitalWrite()** function. But before sending any signal to a GPIO pin, we need to specify in which mode our GPIO pin should work - to read or to write a signal. To specify the operating mode of a GPIO pin, we can use the **pinMode()** function.
+## **Conclusion**
 
-### pinMode()
-The **pinMode(pin, mode)** function sets the operating mode of the **pin** to one of the possible modes: **INPUT** to read the signal from the pin or **OUTPUT** to write the signal.
-
-### digitalWrite()
-The **digitalWrite(pin, value)** function is used to set a high or low logical voltage level. **pin**: GPIO pin number; **value**: the value you want to set on the specified pin, you can provide values **HIGH** (high voltage level) or **LOW** (low voltage level).
-
-## Assignment
-Write a program that turns on two LEDs on the robot. The LEDs are connected to pins defined in the code as **ledPin1** and **ledPin2**. Use these predefined pin names in your program.
-
-## Hint
-You need to set the correct operating mode for the pin and send a signal to it. Use the **pinMode()** function to set the required operating mode for each pin, and use **digitalWrite()** to send a signal to each pin.
-
-## Conclusion
-Congratulations! Now you know what GPIO is and how to send a logical signal to a pin!
+Congratulations! You now understand what GPIO is and how to send a logical signal to a pin. By completing this lesson, you've performed a task that is a small but critical part of real-world rover operations, connecting your learning to the incredible engineering feats of missions like Curiosity and Perseverance.
