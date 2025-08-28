@@ -1,5 +1,3 @@
-# Mars Rover Mission Simulator
-
 ## Lesson 3: Short Distance Traverse
 
 ### Objective
