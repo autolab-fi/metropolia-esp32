@@ -1,31 +1,55 @@
+# Mars Rover Mission Simulator
+
+## Lesson 2: License to Drive
+
+### Objective
+
+Modify a function parameter to control your rover's movement.
+
+### Introduction
+
+In this lesson, you will earn your official Mars rover "driver's license." You'll be writing your first program from scratch, but first, let's go over a fundamental concept in programming: **functions**.
+
 ---
-index: 2
-module: module_1
-task: license_to_drive
-previous: test_drive
-next: short_distance_race
+
+### Theory
+
+In the previous lesson, we used the `rover.h` library, and we'll continue to use it. This library contains functions that allow us to easily control our rover's movements.
+
+**Functions** are named blocks of code that perform specific tasks. When you "call" or "invoke" a function, it performs a specific action, like moving the rover or turning its wheels. Some functions have **parameters**, which allow you to pass specific data into the function to customize its behavior. For example, in the function `moveForwardDistance(distance)`, the `distance` parameter tells the rover exactly how many meters to drive.
+
+We've already used the function `robot.moveForwardSeconds(seconds)`. This function makes the rover move forward, and the `seconds` parameter determines the duration of the movement.
+
 ---
-# Lesson 2. License to drive
 
-## Objective
-Modify function parameter.
+### Real Mission Insight: Rover Autonomy
 
-## Introduction
-In this lesson, we are granting you the driver's license. Today, you will be writing the program on your own without the instructor's help. However, first, let's cover some theory. We will discuss one of the most important concepts in programming: functions.
+Because of the long communication delay between Earth and Mars (from a few minutes to over 20 minutes, depending on the planets' positions), mission controllers can't "joystick" the rover in real-time. Instead, they upload a complete sequence of commands for the rover to execute autonomously, typically for a full Martian day (or **sol**). **Your program simulates a small portion of this pre-planned command sequence.** The rover's on-board computer uses its navigation cameras and hazard sensors to carry out the instructions while avoiding unexpected obstacles.
 
-
-##  Theory
-In the previous lesson, we used the **rover.h** library, and we will continue using it in the future. It contains functions for controlling the robot, allowing us to easily set our rover in motion.
-
-**Functions** are named blocks of code that perform specific tasks. This means that when you invoke a function, it performs a specific action, such as multiplying two numbers or displaying a message on the console. Some functions have **parameters**; for example, the function **function(param1, param2)** has two parameters, param1 and param2. Parameters allow you to pass data into the function and work with it. In future lessons, you will write your own functions for controlling the rover.
+---
 
 ![verfification](https://github.com/autolab-fi/line-robot-curriculum/blob/main/images/module_1/function.png?raw=true)
 
-We have already used the function **rover.moveForwardSeconds(seconds)**. This function makes the rover move forward, and the parameter **seconds** sets the duration of the movement in seconds.
+### Assignment
 
-## Assignment 
-Write a program for the rover to make it drive straight for 5 seconds. You can refer back to the previous lesson to recall how to set the rover in motion. Good luck!
+Write a program for the rover to make it drive straight for **5 seconds**. You can refer back to the previous lesson to recall how to set the rover in motion. Good luck\!
 
-## Conclusion
-Congratulations! You have written your own program for rover movement! In the next lesson, we will explore the robot's movement in different directions using the rover.h library.
+**Hint:** Remember to change the parameter inside the parentheses to control how long the rover drives.
 
+```cpp
+#include <rover.h>
+
+void setup() {
+    // Your code goes here!
+}
+
+void loop() {
+    // The loop function is not used for this exercise
+}
+```
+
+---
+
+### Conclusion
+
+Congratulations\! You have written your own program for rover movement\! You've taken a crucial step toward becoming a mission planner. In the next lesson, we will explore the rover's movement in different directions using the `rover.h` library.
