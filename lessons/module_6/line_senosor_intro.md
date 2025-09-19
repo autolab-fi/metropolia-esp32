@@ -1,4 +1,4 @@
-# **Lesson 1: Line Sensor and Black Line Detection**
+# **Lesson 2: Line Sensor and Black Line Detection**
 
 ## **Objective**
 
