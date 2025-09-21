@@ -1,5 +1,3 @@
-# Mars Rover Mission Simulator
-
 ## Lesson 4: Maneuvering
 
 ### Objective
@@ -18,9 +16,13 @@ You already know how to command the rover's straight movement; now let's delve i
 
 The image below represents the possible directions of the rover's movement.
 
-`robot.turnRight()`: A function for turning the rover **right**.
+`rover.turnLeft()`: A function for turning the rover **left**.
 
-`robot.turnLeft()`: A function for turning the rover **left**.
+`rover.turnRight()`: A function for turning the rover **right**.
+
+`rover.turnLeftAngle()` : A function for turning the rover **left** by an angle.
+
+`rover.turnRightAngle()` : A function for turning the rover **right** by an angle.
 
 As you can see, these turning functions don't require any parameters. It's sufficient to call them, and the rover will turn in place in the desired direction.
 
@@ -34,7 +36,11 @@ The first-ever turn executed by a rover on Mars was by the **Sojourner rover** i
 
 ### Assignment
 
-Write code for the rover to **turn right, then turn left, and finally turn left again**.
+Write code for the rover to perform your the following maneuvering on the martian surface.Make the rover to rotate according to the following plan :
+1.90 degrees to right
+2.45 degrees to left
+3.135 degrees to right
+4.15 degrees to right
 
 ```cpp
 #include <rover.h>
@@ -52,4 +58,4 @@ void loop() {
 
 ### Conclusion
 
-Congratulations\! Now you can move the rover in four directions\! This skill will prove very useful in the next lesson as you tackle more complex navigation challenges.
+Congratulations! Now you can move the rover in four directions\! This skill will prove very useful in the next lesson as you tackle more complex navigation challenges.

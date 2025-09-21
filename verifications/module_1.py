@@ -6,13 +6,13 @@ import numpy as np
 
 
 target_points = {
-    'short_distance_race': [(80, 50), (30, 0)],
+    'mission_zero': [(80, 50), (30, 0)],
     'maneuvering': [(35, 50), (30, 0)],
     'long_distance_race': [(35, 50), (30, 0)]
 }
 
 block_library_functions = {
-    'short_distance_race': False,
+    'mission_zero': False,
     'maneuvering': False,
     'long_distance_race': False,
 }
@@ -32,154 +32,256 @@ def delta_points(point_0, point_1):
                      ((point_0[1] - point_1[1]) ** 2))
 
 
-def short_distance_race(robot, image, td: dict):
-    """Test for lesson 3: Short distance race"""
+def mission_zero(robot, image, td: dict):
+    """Test for three key positions: Location A (30cm), Location B (50cm), then return to start"""
 
     result = {
         "success": True,
         "description": "You are amazing! The Robot has completed the assignment",
         "score": 100
     }
-    text = "Not recognized"
+    text = "Navigate to three positions"
     image = robot.draw_info(image)
+    
     # Initialize the dictionary with consistent structure
     if not td:
         td = {
-            "end_time": time.time() + 20,
+            "end_time": time.time() + 60,  # Extended time for three positions
+            "start_position": None,
             "prev_robot_center": None,
-            "goal": {
-                "forward": 20,   
-                "backward": 35   
+            "current_phase": 1,  # 1: Go to A, 2: Go to B, 3: Return to start
+            "phase_completed": [False, False, False],  # Track completion of each phase
+            "positions": {
+                "start": None,
+                "location_a": None,  # 30cm target
+                "location_b": None,  # 50cm target
+                "current": None
+            },
+            "tolerances": {
+                "location_a": 5,    # 5cm tolerance for Location A
+                "location_b": 5,    # 5cm tolerance for Location B  
+                "return_home": 8    # 8cm tolerance for returning to start
             }
         }
 
     # Get the current robot position
     robot_position = robot.get_info()["position"]
     
-    if td["prev_robot_center"] is not None and robot_position is not None:
-        delta_pos = delta_points(robot_position, td["prev_robot_center"])
-        text = f'Robot position: x: {robot_position[0]:0.1f} y: {robot_position[1]:0.1f}'
-
-        # Calculate the angle for direction
-        ang = robot.compute_angle_robot_point(td["prev_robot_center"])
+    if robot_position is not None:
+        td["positions"]["current"] = robot_position
         
-        direction = 'unknown'
-        if 170 < ang < 190: 
-            direction = 'forward'
-        elif 350 < ang or ang < 10:
-            direction = 'backward'
+        # Set start position on first measurement
+        if td["start_position"] is None:
+            td["start_position"] = robot_position
+            td["positions"]["start"] = robot_position
+            text = f"Starting position set: ({robot_position[0]:.1f}, {robot_position[1]:.1f})"
+        
+        # Calculate distance from start
+        if td["start_position"] is not None:
+            distance_from_start = math.sqrt(
+                (robot_position[0] - td["start_position"][0])**2 + 
+                (robot_position[1] - td["start_position"][1])**2
+            )
+            
+            # Phase 1: Navigate to Location A (30cm from start)
+            if td["current_phase"] == 1 and not td["phase_completed"][0]:
+                target_distance = 30
+                distance_error = abs(distance_from_start - target_distance)
+                
+                if distance_error <= td["tolerances"]["location_a"]:
+                    td["phase_completed"][0] = True
+                    td["positions"]["location_a"] = robot_position
+                    td["current_phase"] = 2
+                    text = f"Location A reached! Distance: {distance_from_start:.1f}cm. Now go to Location B (50cm)"
+                else:
+                    text = f"Phase 1: Go to Location A (30cm). Current distance: {distance_from_start:.1f}cm"
+            
+            # Phase 2: Navigate to Location B (50cm from start)  
+            elif td["current_phase"] == 2 and not td["phase_completed"][1]:
+                target_distance = 50
+                distance_error = abs(distance_from_start - target_distance)
+                
+                if distance_error <= td["tolerances"]["location_b"]:
+                    td["phase_completed"][1] = True
+                    td["positions"]["location_b"] = robot_position
+                    td["current_phase"] = 3
+                    text = f"Location B reached! Distance: {distance_from_start:.1f}cm. Now return to start"
+                else:
+                    text = f"Phase 2: Go to Location B (50cm). Current distance: {distance_from_start:.1f}cm"
+            
+            # Phase 3: Return to starting position
+            elif td["current_phase"] == 3 and not td["phase_completed"][2]:
+                if distance_from_start <= td["tolerances"]["return_home"]:
+                    td["phase_completed"][2] = True
+                    text = f"Returned to start! All phases completed. Final distance: {distance_from_start:.1f}cm"
+                    # Add extra time for completion message
+                    if (td["end_time"] - time.time()) > 5:
+                        td["end_time"] = time.time() + 5
+                else:
+                    text = f"Phase 3: Return to start. Current distance from start: {distance_from_start:.1f}cm"
+            
+            # All phases completed
+            elif all(td["phase_completed"]):
+                text = f"Mission accomplished! All three positions visited successfully."
+                result["description"] = "Perfect! Robot completed all three navigation phases."
 
-        # Adjust goal distances based on the movement direction
-        if direction != 'unknown':
-            td["goal"][direction] -= delta_pos
+    # Progress indicator
+    completed_phases = sum(td["phase_completed"])
+    cv2.putText(image, f"Phase: {td['current_phase']}/3 | Completed: {completed_phases}/3", 
+               (20, image.shape[0] - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
 
-        # Check for task completion and add extra time if needed
-        if td['goal']['forward'] <= 3 and td['goal']['backward'] <= 3 and (td["end_time"] - time.time()) > 3:
-            td["end_time"] = time.time() + 3
-
-    # Check for task failure conditions
-    if (
-        (td['goal']['forward'] < 15 and td['goal']['backward'] > 5) or
-        td['goal']['forward'] < -5 or td['goal']['backward'] < -5 or
-        (td["end_time"] - time.time() <= 2 and (td['goal']['backward'] > 5 or td['goal']['forward'] > 5))
-    ):
-        result["success"] = False
-        result["score"] = 0
-        backward = 35 - td['goal']['backward']
-        forward = 20 - td['goal']['forward']
-        result["description"] = (
-            f'Robot failed the task, moved {forward:.1f} cm forward, {backward:.1f} cm backward | Score: {result["score"]}'
+    # Check for failure conditions
+    time_remaining = td["end_time"] - time.time()
+    if time_remaining <= 2:
+        if not all(td["phase_completed"]):
+            result["success"] = False
+            result["score"] = completed_phases * 33  # Partial credit
+            result["description"] = f"Time expired! Completed {completed_phases}/3 phases. Score: {result['score']}"
+        
+    # Check if robot went too far from reasonable range
+    if robot_position is not None and td["start_position"] is not None:
+        distance_from_start = math.sqrt(
+            (robot_position[0] - td["start_position"][0])**2 + 
+            (robot_position[1] - td["start_position"][1])**2
         )
+        if distance_from_start > 80:  # Too far from start
+            result["success"] = False
+            result["score"] = 0
+            result["description"] = f"Robot went too far from start position: {distance_from_start:.1f}cm"
 
-    # Store the previous robot position
     td['prev_robot_center'] = robot_position
-
     return image, td, text, result
 
-def maneuvering(robot, image, td: dict):
-    """Test for lesson 4: Maneuvering"""
+def task_test(robot, image, td: dict):
+    """Test for rover rotation sequence: 90° right, 45° left, 135° right, 15° right"""
+    import time
+    import math
+    import cv2
 
     result = {
         "success": True,
         "description": "You are amazing! The Robot has completed the assignment",
-        "score": 100  
+        "score": 100
     }
-    text = "Not recognized"
+    text = "Rover rotation sequence verification"
     image = robot.draw_info(image)
-    # Initialize the task dictionary
+    
+    # Initialize the dictionary with consistent structure
     if not td:
         td = {
             "start_time": time.time(),
-            "end_time": time.time() + 12,
+            "end_time": time.time() + 45,  # 45 seconds for all rotations
             "target_angle": [
-                {"left": 90, "right": 0},
-                {"left": 90, "right": 0},
-                {"left": 0, "right": 90}
-            ]
+                {"left": 0, "right": 15},    # Step 4: 15° right
+                {"left": 0, "right": 135},   # Step 3: 135° right  
+                {"left": 45, "right": 0},    # Step 2: 45° left
+                {"left": 0, "right": 90}     # Step 1: 90° right (first to complete)
+            ],
+            "initialized": False,
+            "ang_0": None
         }
 
-    min_for_error = 15
-    min_for_change_point = 10
+    min_for_error = 15  # 15 degree tolerance
+    min_for_change_point = 10  # 10 degrees to consider step completed
 
     if robot is not None:
-        # ✅ FIX: Removed the extra argument
+        # Get current angle using the same method as reference
         ang = robot.compute_angle_x()
+        
+        # Initialize the starting angle
+        if not td["initialized"]:
+            td['ang_0'] = ang
+            td["initialized"] = True
+            text = f"Initialization complete. Starting angle: {ang:.0f}°. Begin rotation sequence!"
+            return image, td, text, result
 
-        if 'ang_0' in td:
-            if td['ang_0'] < 90 and ang > 300:
-                td['ang_0'] = 360 + td['ang_0']
-            elif td['ang_0'] > 300 and ang < 90:
-                td['ang_0'] -= 360
+        # Handle angle wrap-around (same logic as reference)
+        if td['ang_0'] < 90 and ang > 300:
+            td['ang_0'] = 360 + td['ang_0']
+        elif td['ang_0'] > 300 and ang < 90:
+            td['ang_0'] -= 360
 
-            delta_ang = ang - td['ang_0']
+        delta_ang = ang - td['ang_0']
 
-            if delta_ang < 0:
-                td['target_angle'][-1]['right'] += delta_ang
-            else:
-                td['target_angle'][-1]['left'] -= delta_ang
+        # Update target angles based on rotation direction
+        if delta_ang < 0:  # Robot turned right (clockwise)
+            if td['target_angle'][-1]['right'] > 0:
+                td['target_angle'][-1]['right'] += delta_ang  # Reduce remaining right rotation
+        else:  # Robot turned left (counter-clockwise)
+            if td['target_angle'][-1]['left'] > 0:
+                td['target_angle'][-1]['left'] -= delta_ang  # Reduce remaining left rotation
 
+        # Check if current step is completed
         if (
-            td['target_angle'][-1]['left'] < min_for_change_point and
-            td['target_angle'][-1]['right'] < min_for_change_point
+            td['target_angle'][-1]['left'] <= min_for_change_point and
+            td['target_angle'][-1]['right'] <= min_for_change_point
         ):
             if len(td['target_angle']) > 1:
-                td['target_angle'].pop()
-            elif td["end_time"] - td["start_time"] == 12:
-                td["end_time"] = time.time() + 1
+                completed_step = 5 - len(td['target_angle'])
+                step_descriptions = ["90° right", "45° left", "135° right", "15° right"]
+                text = f"Step {completed_step} completed: {step_descriptions[completed_step-1]}!"
+                td['target_angle'].pop()  # Move to next step
+                # Add extra time for each completed step
+                td["end_time"] = time.time() + 15
+            else:
+                text = "All rotations completed! Mission successful!"
+                if (td["end_time"] - time.time()) > 5:
+                    td["end_time"] = time.time() + 5
 
-        text = f"Current angle with x-axis: {ang:0.0f}"
+        # Update display text
+        current_step = 5 - len(td['target_angle'])  # Calculate current step (1-4)
+        remaining_left = max(0, td['target_angle'][-1]['left'])
+        remaining_right = max(0, td['target_angle'][-1]['right'])
+        
+        if current_step <= 4:
+            step_descriptions = ["90° right", "45° left", "135° right", "15° right"]
+            text = f"Step {current_step}: {step_descriptions[current_step-1]} | "
+            text += f"Current: {ang:.0f}° | "
+            if remaining_right > min_for_change_point:
+                text += f"Need {remaining_right:.0f}° more right"
+            elif remaining_left > min_for_change_point:
+                text += f"Need {remaining_left:.0f}° more left"
+            else:
+                text += "Step completing..."
+
+        # Update ang_0 for next iteration
         td['ang_0'] = ang
 
-    if (
+    # Check for failure conditions
+    time_left = td["end_time"] - time.time()
+    if len(td['target_angle']) > 0 and (
         td['target_angle'][-1]['left'] < -min_for_error or
         td['target_angle'][-1]['right'] < -min_for_error or
-        (
-            td['end_time'] - time.time() < 2 and
-            (
-                td['target_angle'][0]['right'] > min_for_error or
-                td['target_angle'][0]['left'] > min_for_error
-            )
-        )
+        (time_left < 2 and len(td['target_angle']) > 1)
     ):
         result["success"] = False
-        result["score"] = 0 
+        completed_steps = max(0, 4 - len(td['target_angle']))
+        result["score"] = completed_steps * 25  # 25 points per completed step
         result["description"] = (
-            f"It is disappointing, but robot failed the task. "
-            f"The robot had to turn more: "
+            f"Robot failed the rotation sequence. "
+            f"Completed {completed_steps}/4 steps. "
         )
+        
+        # Show what rotations were still needed
+        if len(td['target_angle']) > 0:
+            for i in range(len(td['target_angle']) - 1, -1, -1):
+                if td['target_angle'][i]['right'] > min_for_change_point:
+                    result["description"] += f"{int(td['target_angle'][i]['right'])} degrees right; "
+                if td['target_angle'][i]['left'] > min_for_change_point:
+                    result["description"] += f"{int(td['target_angle'][i]['left'])} degrees left; "
+    
+    # Success condition - all steps completed
+    elif len(td['target_angle']) <= 1 and (
+        len(td['target_angle']) == 0 or (
+            td['target_angle'][-1]['left'] <= min_for_change_point and
+            td['target_angle'][-1]['right'] <= min_for_change_point
+        )
+    ):
+        result["success"] = True
+        result["description"] = "Perfect! Robot completed all rotation steps successfully."
+        result["score"] = 100
 
-        for i in range(len(td['target_angle']) - 1, -1, -1):
-            if abs(td['target_angle'][i]['right']) > min_for_change_point:
-                result["description"] += (
-                    f"{int(td['target_angle'][i]['right'])} degrees right; "
-                )
-            if abs(td['target_angle'][i]['left']) > min_for_change_point:
-                result["description"] += (
-                    f"{int(td['target_angle'][i]['left'])} degrees left; "
-                )
-
-
-    result["description"] += f' | Score: {result["score"]}'  
+    result["description"] += f' | Score: {result["score"]}'
     return image, td, text, result
 
 

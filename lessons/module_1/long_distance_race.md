@@ -1,10 +1,6 @@
 # Mars Rover Mission Simulator
 
-## Lesson 5: Long Distance Traverse
-
-### Objective
-
-Write a program with a specific sequence of movements to guide your rover.
+## Lesson 5: Your First Mission
 
 ### Introduction
 
