@@ -26,6 +26,8 @@ The engineers who write the commands for rovers like **Perseverance** are called
 
 Write a program for the rover to follow the route represented in the image.
 
+![trajectory](https://github.com/autolab-fi/line-robot-curriculum/blob/main/images/module_1/trajectory.png?raw=true)
+
 You can refresh your memory of the library functions by revisiting the previous lessons.
 
 ---
