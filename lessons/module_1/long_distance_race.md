@@ -1,5 +1,3 @@
-# Mars Rover Mission Simulator
-
 ## Lesson 5: Your First Mission
 
 ### Introduction

@@ -9,9 +9,9 @@ def delta_points(point_0, point_1):
 
 # start points for the tasks
 target_points = {
-    'test_drive': [(35, 50), (30, 0)],
-    'license_to_drive': [(35, 50), (30, 0)],
-    'draw': [(50, 50), (30, 0)]
+    'test_mission': [(35, 50), (30, 0)],
+    'permit_for_operation': [(35, 50), (30, 0)],
+    'rovers_trajectory': [(50, 50), (30, 0)]
 }
 
 # The dictionary specifies the disabled movement functions of the library. This is necessary to prevent cheating.  
@@ -19,9 +19,9 @@ target_points = {
 # to call a library function directly.
 # However, these functions will be disabled if the corresponding value in the dictionary is set to `True`.
 block_library_functions = {
-    'test_drive': False,
-    'license_to_drive': False,
-    'draw': False,
+    'test_mission': False,
+    'permit_for_operation': False,
+    'rovers_trajectory': False,
 }
 
 # function to get value from dictionary block_library_functions
@@ -36,8 +36,8 @@ def get_target_points(task):
     return target_points[task]
 
 
-def test_drive(robot, image, td: dict):
-    """Test for lesson 1: Test drive"""
+def test_mission(robot, image, td: dict):
+    """Test for lesson 1: Test mission"""
 
     # init result dictionary
     result = {
@@ -94,8 +94,8 @@ def test_drive(robot, image, td: dict):
     return image, td, text, result
 
 
-def license_to_drive(robot, image, td: dict):
-    """Test for lesson 2: License to drive"""
+def permit_for_operation(robot, image, td: dict):
+    """Test for lesson 2: Permit for operation"""
     # init test data dictionary
     if not td:
         td = {
@@ -123,7 +123,7 @@ def draw_trajectory(image, points, color, width, restore):
         prev_point = point
 
 
-def draw(robot, image, td: dict):
+def rovers_trajectory(robot, image, td: dict):
     """Drawing trajectory at lesson Drawing"""
 
     # init result dictionary

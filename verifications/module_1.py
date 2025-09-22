@@ -152,7 +152,7 @@ def mission_zero(robot, image, td: dict):
     td['prev_robot_center'] = robot_position
     return image, td, text, result
 
-def task_test(robot, image, td: dict):
+def manuvering(robot, image, td: dict):
     """Test for rover rotation sequence: 90° right, 45° left, 135° right, 15° right"""
     import time
     import math
