@@ -1,6 +1,4 @@
-# Mars Rover Mission Simulator
-
-## Lesson 1: Test Drive
+## Lesson 1: Test Mission
 
 ### Objective
 
@@ -20,14 +18,12 @@ Now, let's test the rover by writing a program for forward movement. This simple
 
 1.  Copy the code provided below and paste it into the code editor.
 
-<!-- end list -->
-
 ```cpp
 #include <rover.h>
 
 void setup() {
     // Command the rover to move forward for 3 seconds
-    robot.moveForwardSeconds(3);
+    rover.moveForwardSeconds(3);
 }
 
 void loop() {
@@ -46,4 +42,4 @@ The **Curiosity rover's** first test drive on Mars occurred on August 22, 2012, 
 
 ### Conclusion
 
-Wasn't hard, was it? A tiny code, though a giant leap toward building your robotics skillset. You have successfully acquired the skill to make the rover move. Now, you can proceed to the next lesson\!
+Wasn't hard, was it? A tiny code, though a giant leap toward building your robotics skillset. You have successfully acquired the skill to make the rover move. Now, you can proceed to the next lesson!

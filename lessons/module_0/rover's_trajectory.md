@@ -26,31 +26,33 @@ Another active rover, **Curiosity**, landed in Gale Crater in 2012. It found evi
 
 ---
 
+## Mission
+
+Navigate from landing site toward ancient river delta
+
 ## Mission Code Example
 
 ```cpp
+
 #include <rover.h>
 
 void setup() {
-    // Initialize your Mars rover at the crater landing site
-    // Coordinates: 18.38°N, 77.58°W in Jezero Crater
-    robot.begin();
-
-    // Mission: Navigate from landing site toward ancient river delta
-    // Sol 1 operations: Geological survey approach pattern
-    robot.turnLeftAngle(45);        // Turn toward delta formation
-    robot.moveForwardDistance(20);  // Advance 20 meters north-northwest
-    robot.turnRight();               // Adjust heading for obstacle avoidance  
-    robot.moveForwardDistance(20);  // Continue 20 meters toward target
-    robot.turnRight();               // Navigate around rock field
-    robot.moveForwardDistance(20);  // Maintain safe distance from hazards
-    robot.turnRight();               // Final approach alignment
-    robot.moveForwardDistance(20);  // Reach geological survey position
+    // Coordinates: 18.38°N, 77.58°W in Jezero Crater
+    // Mission: Navigate from landing site toward ancient river delta
+    rover.turnLeftAngle(45);
+    rover.moveForwardDistance(20);      // Advance 20 meters north-northwest
+    rover.turnRightAngle(45);           // Adjust heading around obstacles
+    rover.moveForwardDistance(40);
+    rover.turnRightAngle(45);           // Navigate around rock field
+    rover.moveForwardDistance(20);
+    rover.turnLeftAngle(45);            // Final approach alignment
+    rover.moveForwardDistance(20);      // Reach geological survey position
 }
 
 void loop() {
-    // The loop function is not used for pre-planned traverses
+    // The loop function is not used for pre-planned traverses
 }
+
 ```
 
 ---

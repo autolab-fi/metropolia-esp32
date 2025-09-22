@@ -1,52 +1,52 @@
 [
   {
-    "name": "Introduction to the Robot",
-    "description": "Getting familiar with the platform and learning how to control the robot.",
+    "name": "Introduction to the Rover",
+    "description": "Getting familiar with the Mission Control and control the Rover.",
     "sn": 0,
     "str_id": "module_0",
     "lessons": [
       {
-        "str_id": "draw",
-        "name": "Drawing",
+        "str_id": "Rover's Trajectory",
+        "name": "Rover's Trajectory",
         "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_0/draw.md",
         "sn": 0,
         "description": "Introduction to the platform, listing all peripherals, describing what we will be working with, and outlining any restrictions on libraries and tag words.",
         "template": "// Include the library for controlling the robot\n#include <rover.h>\n// The setup() function runs once when the rover is powered on or reset\nvoid setup() {\n\t// Comment lines with commands you do not want to use\n\t// To comment out a line, just add \"//\" at the beginning of the line\n\trover.turnLeftAngle(45);\n\trover.moveForwardDistance(20);\n\trover.turnRight();\n\trover.moveForwardDistance(20);\n\trover.turnRight();\n\trover.moveForwardDistance(20);\n\trover.turnRight();\n\trover.moveForwardDistance(20);\n}\n\n// The loop() function runs repeatedly after setup() has finished\nvoid loop() {\n\t// No instructions for continuous execution\n}"
       },
       {
-        "str_id": "test_drive",
-        "name": "Test drive",
+        "str_id": "Test Mission",
+        "name": "Test Mission",
         "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_0/test_drive.md",
         "sn": 1,
         "description": "Some introductory words on moving the robot forward using a library.",
         "template": "// Paste code here"
       },
       {
-        "str_id": "license_to_drive",
+        "str_id": "Permit for Operation",
         "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_0/license_to_drive.md",
         "sn": 2,
-        "name": "License to drive",
+        "name": "Permit for Operation",
         "description": "Writing a simple program independently, similar to the previous lesson.",
         "template": "#include <rover.h>\nvoid setup() {\n\t// Write movement function here\n}\nvoid loop(){\n}"
       }
     ]
   },
   {
-    "name": "Controlling Robot Movement",
-    "description": "Demonstrating the robot's capabilities.",
+    "name": "Operate the Rover",
+    "description": "Demonstrating the Rover's capabilities.",
     "sn": 1,
     "str_id": "module_1",
     "lessons": [
       {
-        "str_id": "short_distance_race",
+        "str_id": "Mission Zero",
         "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_1/short_distance_race.md",
         "sn": 3,
-        "name": "Short distance race",
+        "name": "Mission Zero",
         "description": "Using library functions to move a specific distance, both forward and backward.",
         "template": "#include <rover.h>\nvoid setup() {\n\t// Write movement functions here\n}\nvoid loop(){\n}"
       },
       {
-        "str_id": "maneuvering",
+        "str_id": "Maneuvering",
         "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_1/maneuvering.md",
         "sn": 4,
         "name": "Maneuvering",
@@ -54,10 +54,10 @@
         "template": "#include <rover.h>\nvoid setup() {\n\t// Write functions to rotate rover here\n}\nvoid loop(){\n}"
       },
       {
-        "str_id": "long_distance_race",
+        "str_id": "Your First Mission",
         "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_1/long_distance_race.md",
         "sn": 5,
-        "name": "Fruit Ninja",
+        "name": "Your First Mission",
         "description": "Writing a program with a sequence of commands to move along a trajectory depicted in the diagram.",
         "template": "#include <rover.h>\nvoid setup() {\n\t// Write sequnce of movement functions here\n}\nvoid loop(){\n}"
       }
@@ -139,12 +139,12 @@
     "name": "Line Sensor Introduction",
     "description": "Understanding how IR line sensors work and detecting black lines using the Octoliner sensor array.",
     "sn": 5,
-    "str_id": "module_6",
+    "str_id": "module_5",
     "lessons": [
       {
         "str_id": "Getting Started with Debugging Monitor",
         "name": "Getting Started with Debugging Monitor",
-        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_6/Introduction.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_5/Introduction.md",
         "sn": 11,
         "description": "Learn how to use the debugging monitor to troubleshoot and optimize your robot's performance effectively. It can be used in all the modules to monitor the values of sensors and variables.",
         "template": "//Paste the code here"
@@ -152,7 +152,7 @@
       {
         "str_id": "line_sensor_intro",
         "name": "Line Sensor and Black Line Detection",
-        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_6/line_senosor_intro.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_5/line_senosor_intro.md",
         "sn": 12,
         "description": "This lesson focuses on understanding how an Octoliner sensor detects black lines using IR sensors and implementing black line detection.",
         "template": "#include <Octoliner.h>\n\n// I2C Address (default 42)\nOctoliner octoliner(42);\n\n// Black threshold for detection\nconst int MY_BLACK_THRESHOLD = 100;\n\nvoid setup() {\n    octoliner.begin();\n    octoliner.setSensitivity(245);  // Adjust sensitivity if needed\n}\n\nvoid loop() {\n    int value1 = octoliner.analogRead(1);\n}"
@@ -163,12 +163,12 @@
     "name": "Programming Fundamentals",
     "description": "Essential programming concepts including variables, conditional statements, loops, and arrays for robot control.",
     "sn": 6,
-    "str_id": "module_7",
+    "str_id": "module_6",
     "lessons": [
       {
         "str_id": "introduction_to_variables_and_conditional_statements",
         "name": "Introduction to Variables and Conditional Statements",
-        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_7/Introduction%20to%20Variables%20and%20Conditional%20Statements.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_6/Introduction%20to%20Variables%20and%20Conditional%20Statements.md",
         "sn": 13,
         "description": "Learn how to declare and use variables in programming, and apply conditional logic using if, else if, and else statements.",
         "template": "#include <Octoliner.h>\n#include <rover.h>\n\n// I2C Address (default 42)\nOctoliner octoliner(42);\n\nvoid setup() {\n    octoliner.begin();\n    octoliner.setSensitivity(245);\n}\n\nvoid loop() {\n    // Read values from all sensors (0 - 7)\n    int value_0 = octoliner.analogRead(0);\n    int value_1 = octoliner.analogRead(1);\n\n    // YOUR CODE HERE:\n    // Add if-else if-else statements to determine which sensor(s) detect the line\n\n}"
@@ -176,7 +176,7 @@
       {
         "str_id": "loops_and_conditional_logic",
         "name": "Loops and Conditional Logic",
-        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_7/Loops%20and%20Conditional%20Logic.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_6/Loops%20and%20Conditional%20Logic.md",
         "sn": 14,
         "description": "Learn how to repeat actions using for and while loops combined with conditional statements.",
         "template": "#include <Octoliner.h>\n#include <rover.h>\n\n// I2C Address (default 42)\nOctoliner octoliner(42);\n\nvoid setup() {\n    octoliner.begin();\n    octoliner.setSensitivity(245);\n}\n\nvoid loop() {\n    // YOUR CODE HERE:\n    // Use a loop to read and print values from all 8 sensors (0-7)\n\n}"
@@ -184,7 +184,7 @@
       {
         "str_id": "array_and_processing_data",
         "name": "Arrays and Processing Data with Loops",
-        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_7/Arrays%20and%20Processing%20Data%20with%20Loops.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_6/Arrays%20and%20Processing%20Data%20with%20Loops.md",
         "sn": 15,
         "description": "Understand how to use arrays to store and analyze sensor data with systematic data collection.",
         "template": "#include <Octoliner.h>\n#include <rover.h>\n\n// I2C Address (default 42)\nOctoliner octoliner(42);\nconst int MY_BLACK_THRESHOLD = 100;\n\nvoid setup() {\n    octoliner.begin();\n    octoliner.setSensitivity(245);\n\n    // YOUR CODE HERE:\n    // 1. Create three arrays to store 8 sensor readings each\n    // 2. Take measurements at different rover positions\n    // 3. Send all data systematically using printMQTT()\n\n}\n\nvoid loop() {\n    // Empty - all work done in setup()\n}"
@@ -195,12 +195,12 @@
     "name": "Advanced Line Following",
     "description": "Advanced line following techniques including relay, P, PI, and PID controllers for smooth and accurate robot movement.",
     "sn": 7,
-    "str_id": "module_8",
+    "str_id": "module_7",
     "lessons": [
       {
         "str_id": "basic_line_follower",
         "name": "Relay, P, and PI Controllers",
-        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_8/basic_line_follower.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_7/basic_line_follower.md",
         "sn": 16,
         "description": "Understand how different types of controllers work — Relay, Proportional (P), and Proportional-Integral (PI) for line following.",
         "template": "#include <Octoliner.h>\n#include <rover.h>\n\n// I2C Address (default 42)\nOctoliner octoliner(42);\nint speed=30;\n\n// Black threshold for detection\nconst int MY_BLACK_THRESHOLD = 100;\n\nvoid setup() {\n    octoliner.begin();\n    octoliner.setSensitivity(230);\n}\n\nvoid loop() {\n    // Read all sensor values\n    for (uint8_t i = 0; i < 8; i++) {\n       int value = octoliner.analogRead(i);\n    }\n    rover.runMotorSpeedRight(speed);\n    rover.runMotorSpeedLeft(speed);\n}"
@@ -208,7 +208,7 @@
       {
         "str_id": "pi",
         "name": "P and PI Controllers",
-        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_8/P%20and%20PI.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_7/P%20and%20PI.md",
         "sn": 17,
         "description": "Learn about Proportional and Proportional-Integral controllers for improved line following performance.",
         "template": "//Paste the code here"
@@ -216,7 +216,7 @@
       {
         "str_id": "pid",
         "name": "PID Controller",
-        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_8/PID.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_7/PID.md",
         "sn": 18,
         "description": "Implement a complete PID controller combining proportional, integral, and derivative terms for optimal line following.",
         "template": "//Paste the code here"
