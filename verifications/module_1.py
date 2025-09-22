@@ -8,13 +8,13 @@ import numpy as np
 target_points = {
     'mission_zero': [(80, 50), (30, 0)],
     'maneuvering': [(35, 50), (30, 0)],
-    'long_distance_race': [(35, 50), (30, 0)]
+    'your_first_mission': [(35, 50), (30, 0)]
 }
 
 block_library_functions = {
     'mission_zero': False,
     'maneuvering': False,
-    'long_distance_race': False,
+    'your_first_mission': False,
 }
 
 def get_block_library_functions(task):
@@ -327,8 +327,8 @@ def image_to_mask(filename, percentage):
     return temp, mask
 
 
-def long_distance_race(robot, image, td: dict):
-    """Test for lesson 5: Long distance race."""
+def your_first_mission(robot, image, td: dict):
+    """Test for lesson 5: Your First Mission."""
 
     result = {
         "success": True,

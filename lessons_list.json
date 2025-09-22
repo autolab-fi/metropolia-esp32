@@ -78,10 +78,10 @@
         "template": "#include <rover.h>\nvoid setup() {\n\t// Write code to tutn on led here\n}\nvoid loop(){\n}"
       },
       {
-        "str_id": "alarm",
+        "str_id": "hazard_lights",
         "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_2/alarm.md",
         "sn": 7,
-        "name": "Robot's alarm",
+        "name": "Hazard Lights",
         "description": "More about the digitalWrite() and pinMode() functions. Task: Blinking LEDs.",
         "template": "#include <rover.h>\nvoid setup() {\n\t// Use the pinMode function here\n}\nvoid loop(){\n\t// Write code to turn the LED on and off here, and don't forget to add pauses \n}"
       }
