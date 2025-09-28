@@ -79,7 +79,7 @@
       },
       {
         "str_id": "hazard_lights",
-        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_2/alarm.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_2/hazard_lights.md",
         "sn": 7,
         "name": "Hazard Lights",
         "description": "More about the digitalWrite() and pinMode() functions. Task: Blinking LEDs.",
@@ -88,25 +88,25 @@
     ]
   },
   {
-    "name": "Controlling Motors",
+    "name": "Low Level Control",
     "description": "Studying robot kinematics. Writing functions. What are DC motors.",
     "sn": 3,
     "str_id": "module_3",
     "lessons": [
       {
-        "str_id": "differential_drive",
-        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_3/differential_drive.md",
+        "str_id": "manual_control",
+        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_3/manual_control.md",
         "sn": 8,
-        "name": "Differential drive",
+        "name": "Manual Control",
         "description": "An introduction to the robot's kinematics. Task: Experiment with functions for moving the robot forward.",
         "template": "#include <rover.h>\nvoid setup() {\n\t// Write code to run and stop the motors here\n}\nvoid loop(){\n}"
       },
       {
-        "str_id": "move_function",
-        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_3/move_function.md",
+        "str_id": "sequenced_commands",
+        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_3/sequenced_commands.md",
         "sn": 9,
-        "name": "Movement Function",
-        "description": "Writing functions in Arduino. Task: Write a function to rotate the robot.",
+        "name": "Sequenced commands",
+        "description": "Writing functions in Arduino. Task: Write a function to perform the following sequence: move forward 20cm, turn approximately 180 degrees",
         "template": "#include <rover.h>\nvoid setup() {\n\t// Call your function here\n}\nvoid loop(){\n}\n // Write your function here"
       },
       {
@@ -120,15 +120,15 @@
     ]
   },
   {
-    "name": "Encoders",
+    "name": "Preceise Movement",
     "description": "Explore the use of encoders in robotics, covering their purpose, types, and practical applications for movement control!",
     "sn": 4,
     "str_id": "module_4",
     "lessons": [
       {
-        "str_id": "encoders",
-        "name": "Encoder",
-        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_4/encoders_en.md",
+        "str_id": "precise_movement",
+        "name": "Precise Movement with Encoders",
+        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_4/precise_movement.md",
         "sn": 11,
         "description": "This lesson introduces encoders as sensors for measuring wheel rotation and and provides practical exercise to read encoder values.",
         "template": "#include <rover.h>\nvoid setup() {\n\t// Reset encoders values\n\trover.resetLeftEncoder();\n\trover.resetRightEncoder();\n\t// Read start position values\n\tprintMQTT(\"START POSITION\");\n\tprintMQTT(\"LEFT:\");\n\t// Will take encoder values in degrees\n\t// Assume one rotation ~360°\n\t// printMQTT(rover.encoderDegreesLeft()); // TODO: this line should be done by student\n\tprintMQTT(\"RIGHT:\");\n\t//printMQTT(rover.encoderDegreesRight()); // TODO: this line should be done by student\n\n\t// Move forward\n\trover.moveForwardDistance(3.5 * 2 * 3.14159);  // one rotation forward (wheels diameter * pi)\n\tprintMQTT(\"FORWARD MOVEMENT POSITION\");\n\tprintMQTT(\"LEFT:\");\n\t//printMQTT(rover.encoderDegreesLeft()); // TODO: this line should be done by student\n\tprintMQTT(\"RIGHT:\");\n\t//printMQTT(rover.encoderDegreesRight()); // TODO: this line should be done by student\n\t\n\tdelay(500);\n\t\n\t// Move backward\n\trover.moveBackwardDistance(3.5 * 2 * 3.14159);  // one rotation backward (wheels diameter * pi)\n\tprintMQTT(\"BACKWARD MOVEMENT POSITION\");\n\tprintMQTT(\"LEFT:\");\n\t// printMQTT(rover.encoderDegreesLeft()); //TODO: this line should be done by student\n\tprintMQTT(\"RIGHT:\");\n\t//printMQTT(rover.encoderDegreesRight());\t//TODO: this line should be done by student\n}\n\nvoid loop() {\n\tdelay(1000);\n}"

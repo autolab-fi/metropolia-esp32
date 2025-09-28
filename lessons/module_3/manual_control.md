@@ -1,4 +1,4 @@
-### **Lesson 8: Differential Drive**
+### **Lesson 8: Manual Control**
 
 ## **Lesson objective**
 
@@ -38,7 +38,7 @@ To stop the motors, you can also use the functions **`stopMotorRight()`** and **
 
 ## **Assignment**
 
-In this lesson, we encourage you to experiment with the differential drive of the rover. Write a program that makes the rover drive straight for 3 seconds with a deviation of no more than 10 degrees. You will not be able to use the **`moveForwardDistance`**, **`moveForwardSpeedDistance`**, or **`moveForwardSeconds`** functions from the library. You will likely have to send the program multiple times, adjusting the motor speeds to achieve the desired result.
+In this lesson, we encourage you to experiment with the differential drive of the rover. Write a program that makes the rover navigate straight for 3 seconds with a deviation of no more than 10 degrees. You will not be able to use the **`moveForwardDistance`**, **`moveForwardSpeedDistance`**, or **`moveForwardSeconds`** functions from the library. You will likely have to send the program multiple times, adjusting the motor speeds to achieve the desired result.
 
 ### **Hint**
 
