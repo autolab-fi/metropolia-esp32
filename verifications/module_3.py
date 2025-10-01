@@ -5,14 +5,14 @@ import os
 import numpy as np
 
 target_points = {
-    'differential_drive': [(30, 50), (30, 0)],
-    'move_function':[(50, 50), (30, 0)],
+    'manual_control': [(30, 50), (30, 0)],
+    'sequenced_commands':[(50, 50), (30, 0)],
     'electric_motor': [(50, 50), (30, 0)]
 }
 
 block_library_functions = {
-    'differential_drive': True,
-    "move_function": True,
+    'manual_control': True,
+    "sequenced_commands": True,
     'electric_motor': True
 }
 
@@ -26,48 +26,180 @@ def get_target_points(task):
     return target_points.get(task, [])
 
 
-def move_function(robot, image, td: dict):
-    """Test: Robot must turn 180 degrees."""
-    # overlay robot info on image
+def sequenced_commands(robot, image, td: dict):
+    """Verification function: Robot must move straight 20cm then rotate 180 degrees"""
+    # Initialize result - default to failure
+    result = {
+        "success": False,
+        "description": "Move forward 20cm then rotate 180 degrees",
+        "score": 0
+    }
+    text = "Move forward 20cm then rotate 180°"
     image = robot.draw_info(image)
-
-    # initialize task data
+    
+    # Initialize task data
     if not td:
-        current_ang = robot.compute_angle_x()
-        target_ang = current_ang + 180 if current_ang < 180 else current_ang - 180
         td = {
-            "start_time": time.time(),
-            "end_time": time.time() + 7,
-            "target_ang": target_ang,
-            "completed": False,
+            "end_time": time.time() + 30,  # 30 seconds to complete
+            "start_position": None,
+            "current_phase": "forward",  # "forward", "rotation", "completed"
+            "forward_completed": False,
+            "rotation_completed": False,
+            "forward_distance": 0,
+            "total_rotation": 0,
+            "trajectory": [],
+            "recent_positions": [],  # For calculating rotation
+            "initialized": False,
+            "completion_time": None,
+            "last_position": None,
+            "movement_threshold": 2,  # cm - minimum movement to detect rotation
+            "stationary_time": 0,
+            "rotation_start_time": None
         }
 
-    # default text/result
-    ang = robot.compute_angle_x()
-    delta_ang = abs(ang - td["target_ang"])
-    text = f"Robot must turn to: {delta_ang:0.0f}"
-    result = {
-        "success": True,
-        "description": "You are amazing! The Robot has completed the assignment",
-        "score": 100,
-    }
+    # Get robot information
+    info = robot.get_info()
+    robot_position = info['position']
+    robot_position_px = info['position_px']
+    
+    if robot_position is not None:
+        # Add to trajectory for visualization
+        if robot_position_px is not None:
+            td['trajectory'].append(robot_position_px)
+        
+        # Initialize on first frame
+        if not td["initialized"]:
+            td["start_position"] = robot_position
+            td["last_position"] = robot_position
+            td["initialized"] = True
+            text = "Phase 1: Move forward 20cm"
+        else:
+            robot_x, robot_y = robot_position
+            start_x, start_y = td["start_position"]
+            last_x, last_y = td["last_position"]
+            
+            # Calculate distance traveled from start
+            distance_traveled = math.sqrt((robot_x - start_x)**2 + (robot_y - start_y)**2)
+            td["forward_distance"] = distance_traveled
+            
+            # Calculate movement since last frame
+            movement_since_last = math.sqrt((robot_x - last_x)**2 + (robot_y - last_y)**2)
+            
+            # Store recent positions for rotation calculation (keep last 10 positions)
+            td["recent_positions"].append(robot_position)
+            if len(td["recent_positions"]) > 10:
+                td["recent_positions"].pop(0)
+            
+            # Phase 1: Forward movement (20cm ± 2cm tolerance)
+            if td["current_phase"] == "forward":
+                if distance_traveled >= 18:  # 20cm with 2cm tolerance
+                    td["forward_completed"] = True
+                    td["current_phase"] = "rotation"
+                    td["rotation_start_time"] = time.time()
+                    text = "Phase 2: Rotate 180 degrees"
+                else:
+                    text = f"Phase 1: Move forward - {distance_traveled:.1f}cm / 20cm"
+            
+            # Phase 2: Rotation detection
+            elif td["current_phase"] == "rotation" and td["forward_completed"]:
+                # Check if robot is moving much (if so, not rotating in place)
+                if movement_since_last < td["movement_threshold"]:
+                    td["stationary_time"] += 1  # Count frames robot is relatively stationary
+                else:
+                    td["stationary_time"] = 0
+                
+                # Calculate rotation using trajectory changes
+                if len(td["recent_positions"]) >= 5:
+                    # Calculate direction vectors from trajectory
+                    old_pos = td["recent_positions"][0]
+                    mid_pos = td["recent_positions"][len(td["recent_positions"])//2]
+                    current_pos = td["recent_positions"][-1]
+                    
+                    # Calculate vectors
+                    vec1_x = mid_pos[0] - old_pos[0]
+                    vec1_y = mid_pos[1] - old_pos[1]
+                    vec2_x = current_pos[0] - mid_pos[0]
+                    vec2_y = current_pos[1] - mid_pos[1]
+                    
+                    # Calculate angle between vectors if both have significant length
+                    len1 = math.sqrt(vec1_x**2 + vec1_y**2)
+                    len2 = math.sqrt(vec2_x**2 + vec2_y**2)
+                    
+                    if len1 > 1 and len2 > 1:  # Only if robot has moved significantly
+                        # Normalize vectors
+                        vec1_x /= len1
+                        vec1_y /= len1
+                        vec2_x /= len2
+                        vec2_y /= len2
+                        
+                        # Calculate angle between normalized vectors
+                        dot_product = vec1_x * vec2_x + vec1_y * vec2_y
+                        dot_product = max(-1, min(1, dot_product))  # Clamp to [-1, 1]
+                        angle_change = math.degrees(math.acos(abs(dot_product)))
+                        
+                        # Accumulate rotation
+                        if angle_change > 10:  # Only count significant angle changes
+                            td["total_rotation"] += angle_change
+                
+                # Alternative method: Check if robot has completed a circular path
+                if len(td["trajectory"]) > 20:
+                    # Check if robot has returned close to where rotation started
+                    rotation_start_idx = len(td["trajectory"]) - 20
+                    rotation_start_px = td["trajectory"][rotation_start_idx]
+                    current_px = td["trajectory"][-1]
+                    
+                    if rotation_start_px and current_px:
+                        distance_from_rotation_start = math.sqrt(
+                            (current_px[0] - rotation_start_px[0])**2 + 
+                            (current_px[1] - rotation_start_px[1])**2
+                        )
+                        
+                        # If robot is close to where it started rotating and has been stationary
+                        if distance_from_rotation_start < 50 and td["stationary_time"] > 10:
+                            td["total_rotation"] = max(td["total_rotation"], 180)
+                
+                # Check completion
+                if td["total_rotation"] >= 160:  # 180° with some tolerance
+                    td["rotation_completed"] = True
+                    td["current_phase"] = "completed"
+                    td["completion_time"] = time.time()
+                    text = "Task completed successfully!"
+                else:
+                    text = f"Phase 2: Rotate - {td['total_rotation']:.1f}° / 180°"
+            
+            # Update last position
+            td["last_position"] = robot_position
 
-    # if within 10° of target, give 2 more seconds to settle
-    if delta_ang < 10 and not td["completed"]:
-        td["end_time"] = time.time() + 2
-        td["completed"] = True
+    # Check timing for failures
+    time_remaining = td["end_time"] - time.time()
 
-    # failure: ran out of time without reaching within 10°
-    if (td["end_time"] - time.time()) < 1 and delta_ang > 10:
+    # Result logic
+    if td["forward_completed"] and td["rotation_completed"]:
+        # SUCCESS: Both phases completed
+        result["success"] = True
+        result["score"] = 100
+        result["description"] = "Excellent! Robot moved 20cm forward and rotated 180 degrees successfully."
+        
+    elif time_remaining <= 0:
+        # FAILURE: Time expired
         result["success"] = False
         result["score"] = 0
-        result["description"] = (
-            f"Robot did not turn 180 degrees. "
-            f"Final error: {delta_ang:0.0f} degrees"
-        )
-
-    # append score to description
-    result["description"] += f" | Score: {result['score']}"
+        if not td["forward_completed"]:
+            result["description"] = f"Time expired! Robot only moved {td['forward_distance']:.1f}cm (needed 20cm)."
+        elif not td["rotation_completed"]:
+            result["description"] = f"Time expired! Robot rotated {td['total_rotation']:.1f}° (needed 180°)."
+        else:
+            result["description"] = "Time expired before task completion."
+            
+    else:
+        # Mission in progress
+        result["success"] = True  # Keep running
+        result["score"] = 0
+        if td["forward_completed"]:
+            progress = 50 + (td['total_rotation'] / 180) * 50  # 50% for forward + up to 50% for rotation
+        else:
+            progress = (td['forward_distance'] / 20) * 50  # Up to 50% for forward movement
+        result["description"] = f"Mission in progress - {progress:.0f}% complete"
 
     return image, td, text, result
 

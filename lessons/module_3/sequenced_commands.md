@@ -1,4 +1,4 @@
-### **Lesson 9: Movement Function**
+### **Lesson 9: Sequenced Commands**
 
 ## **Lesson Objective**
 
@@ -90,7 +90,7 @@ Remember: You should write **`moveRoverForwardBackward(3, 1);`** instead of \~\~
 
 ## **Assignment**
 
-Write a program that makes the rover turn approximately 180 degrees.
+Write a program that makes the rover move forward 20cm, then rotate approximately 180 degrees to orient its solar panels toward the sun.
 
 You can use the functions **`runMotorSpeedLeft`**, **`runMotorSpeedRight`**, **`stopMotorRight`**, and **`stopMotorLeft`**. The functions **`moveForwardDistance`**, **`moveBackwardDistance`**, **`turnLeft`**, **`turnRight`**, **`moveForwardSeconds`**, and **`moveBackwardSeconds`** will not work.
 
@@ -102,4 +102,4 @@ We recommend writing your own movement function. You can design it to accept sev
 
 ## **Conclusion**
 
-Congratulations\! In this lesson, you learned how to write your own functions, a critical skill for any programmer. By creating a custom movement function, you’ve not only made your code more efficient but also gained insight into how complex autonomous systems, like those on Mars rovers, are controlled through well-organized, modular code.
+Congratulations! In this lesson, you learned how to write your own functions, a critical skill for any programmer. By creating a custom movement function, you’ve not only made your code more efficient but also gained insight into how complex autonomous systems, like those on Mars rovers, are controlled through well-organized, modular code.
