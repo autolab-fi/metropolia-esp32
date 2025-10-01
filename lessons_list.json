@@ -148,7 +148,7 @@
         "sn": 11,
         "description": "Learn how to use the debugging monitor to troubleshoot and optimize your robot's performance effectively. It can be used in all the modules to monitor the values of sensors and variables.",
         "template": "//Paste the code here"
-      }
+      },
       {
         "str_id": "line_sensor_intro",
         "name": "Line Sensor and Black Line Detection",
