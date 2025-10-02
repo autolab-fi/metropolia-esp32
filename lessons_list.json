@@ -120,7 +120,7 @@
     ]
   },
   {
-    "name": "Preceise Movement",
+    "name": "Precise Movement",
     "description": "Explore the use of encoders in robotics, covering their purpose, types, and practical applications for movement control!",
     "sn": 4,
     "str_id": "module_4",
@@ -145,7 +145,7 @@
         "str_id": "Getting Started with Debugging Monitor",
         "name": "Getting Started with Debugging Monitor",
         "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_5/Introduction.md",
-        "sn": 11,
+        "sn": 12,
         "description": "Learn how to use the debugging monitor to troubleshoot and optimize your robot's performance effectively. It can be used in all the modules to monitor the values of sensors and variables.",
         "template": "//Paste the code here"
       },
@@ -153,7 +153,7 @@
         "str_id": "line_sensor_intro",
         "name": "Line Sensor and Black Line Detection",
         "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_5/line_senosor_intro.md",
-        "sn": 12,
+        "sn": 13,
         "description": "This lesson focuses on understanding how an Octoliner sensor detects black lines using IR sensors and implementing black line detection.",
         "template": "#include <Octoliner.h>\n\n// I2C Address (default 42)\nOctoliner octoliner(42);\n\n// Black threshold for detection\nconst int MY_BLACK_THRESHOLD = 100;\n\nvoid setup() {\n    octoliner.begin();\n    octoliner.setSensitivity(245);  // Adjust sensitivity if needed\n}\n\nvoid loop() {\n    int value1 = octoliner.analogRead(1);\n}"
       }
@@ -169,7 +169,7 @@
         "str_id": "introduction_to_variables_and_conditional_statements",
         "name": "Introduction to Variables and Conditional Statements",
         "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_6/Introduction%20to%20Variables%20and%20Conditional%20Statements.md",
-        "sn": 13,
+        "sn": 14,
         "description": "Learn how to declare and use variables in programming, and apply conditional logic using if, else if, and else statements.",
         "template": "#include <Octoliner.h>\n#include <rover.h>\n\n// I2C Address (default 42)\nOctoliner octoliner(42);\n\nvoid setup() {\n    octoliner.begin();\n    octoliner.setSensitivity(245);\n}\n\nvoid loop() {\n    // Read values from all sensors (0 - 7)\n    int value_0 = octoliner.analogRead(0);\n    int value_1 = octoliner.analogRead(1);\n\n    // YOUR CODE HERE:\n    // Add if-else if-else statements to determine which sensor(s) detect the line\n\n}"
       },
@@ -177,7 +177,7 @@
         "str_id": "loops_and_conditional_logic",
         "name": "Loops and Conditional Logic",
         "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_6/Loops%20and%20Conditional%20Logic.md",
-        "sn": 14,
+        "sn": 15,
         "description": "Learn how to repeat actions using for and while loops combined with conditional statements.",
         "template": "#include <Octoliner.h>\n#include <rover.h>\n\n// I2C Address (default 42)\nOctoliner octoliner(42);\n\nvoid setup() {\n    octoliner.begin();\n    octoliner.setSensitivity(245);\n}\n\nvoid loop() {\n    // YOUR CODE HERE:\n    // Use a loop to read and print values from all 8 sensors (0-7)\n\n}"
       },
@@ -185,7 +185,7 @@
         "str_id": "array_and_processing_data",
         "name": "Arrays and Processing Data with Loops",
         "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_6/Arrays%20and%20Processing%20Data%20with%20Loops.md",
-        "sn": 15,
+        "sn": 16,
         "description": "Understand how to use arrays to store and analyze sensor data with systematic data collection.",
         "template": "#include <Octoliner.h>\n#include <rover.h>\n\n// I2C Address (default 42)\nOctoliner octoliner(42);\nconst int MY_BLACK_THRESHOLD = 100;\n\nvoid setup() {\n    octoliner.begin();\n    octoliner.setSensitivity(245);\n\n    // YOUR CODE HERE:\n    // 1. Create three arrays to store 8 sensor readings each\n    // 2. Take measurements at different rover positions\n    // 3. Send all data systematically using printMQTT()\n\n}\n\nvoid loop() {\n    // Empty - all work done in setup()\n}"
       }
@@ -201,7 +201,7 @@
         "str_id": "basic_line_follower",
         "name": "Relay, P, and PI Controllers",
         "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_7/basic_line_follower.md",
-        "sn": 16,
+        "sn": 17,
         "description": "Understand how different types of controllers work — Relay, Proportional (P), and Proportional-Integral (PI) for line following.",
         "template": "#include <Octoliner.h>\n#include <rover.h>\n\n// I2C Address (default 42)\nOctoliner octoliner(42);\nint speed=30;\n\n// Black threshold for detection\nconst int MY_BLACK_THRESHOLD = 100;\n\nvoid setup() {\n    octoliner.begin();\n    octoliner.setSensitivity(230);\n}\n\nvoid loop() {\n    // Read all sensor values\n    for (uint8_t i = 0; i < 8; i++) {\n       int value = octoliner.analogRead(i);\n    }\n    rover.runMotorSpeedRight(speed);\n    rover.runMotorSpeedLeft(speed);\n}"
       },
@@ -209,7 +209,7 @@
         "str_id": "pi",
         "name": "P and PI Controllers",
         "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_7/P%20and%20PI.md",
-        "sn": 17,
+        "sn": 18,
         "description": "Learn about Proportional and Proportional-Integral controllers for improved line following performance.",
         "template": "//Paste the code here"
       },
@@ -217,7 +217,7 @@
         "str_id": "pid",
         "name": "PID Controller",
         "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_7/PID.md",
-        "sn": 18,
+        "sn": 19,
         "description": "Implement a complete PID controller combining proportional, integral, and derivative terms for optimal line following.",
         "template": "//Paste the code here"
       }
