@@ -5,11 +5,11 @@ import os
 import numpy as np
 
 target_points = {
-    'encoders': [(30, 50), (30, 0)],
+    'precise_movements': [(30, 50), (30, 0)],
 }
 
 block_library_functions = {
-    'encoders': False,
+    'precise_movements': False,
 }
 
 
@@ -22,7 +22,7 @@ def get_target_points(task):
     """Retrieve target points for a given task."""
     return target_points.get(task, [])
 
-def encoders(robot, image, td):
+def precise_movements(robot, image, td):
     """Verification function for Lesson 1: Encoder"""
     result = {
         "success": True,
