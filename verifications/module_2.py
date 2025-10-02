@@ -6,12 +6,12 @@ import numpy as np
 
 target_points = {
     'headlights': [(30, 50), (30, 0)],
-    'alarm': [(30, 50), (30, 0)],
+    'hazard_lights': [(30, 50), (30, 0)],
 }
 
 block_library_functions = {
     'headlights': False,
-    'alarm': False,
+    'hazard_lights': False,
 }
 
 
@@ -114,8 +114,8 @@ def headlights(robot, image, td: dict):
     return image, td, text, result
 
 
-def alarm(robot, image, td: dict):
-    """lesson 7: Alarm ."""
+def hazard_lights(robot, image, td: dict):
+    """lesson 7: hazard lights ."""
 
     result = {
         "success": True,

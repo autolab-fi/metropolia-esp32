@@ -6,24 +6,24 @@
     "str_id": "module_0",
     "lessons": [
       {
-        "str_id": "Rover's Trajectory",
+        "str_id": "rovers_trajectory",
         "name": "Rover's Trajectory",
-        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_0/draw.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_0/rover's_trajectory.md",
         "sn": 0,
         "description": "Introduction to the platform, listing all peripherals, describing what we will be working with, and outlining any restrictions on libraries and tag words.",
         "template": "// Include the library for controlling the robot\n#include <rover.h>\n// The setup() function runs once when the rover is powered on or reset\nvoid setup() {\n\t// Comment lines with commands you do not want to use\n\t// To comment out a line, just add \"//\" at the beginning of the line\n\trover.turnLeftAngle(45);\n\trover.moveForwardDistance(20);\n\trover.turnRight();\n\trover.moveForwardDistance(20);\n\trover.turnRight();\n\trover.moveForwardDistance(20);\n\trover.turnRight();\n\trover.moveForwardDistance(20);\n}\n\n// The loop() function runs repeatedly after setup() has finished\nvoid loop() {\n\t// No instructions for continuous execution\n}"
       },
       {
-        "str_id": "Test Mission",
+        "str_id": "test_mission",
         "name": "Test Mission",
-        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_0/test_drive.md",
+        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_0/test_mission.md",
         "sn": 1,
         "description": "Some introductory words on moving the robot forward using a library.",
         "template": "// Paste code here"
       },
       {
-        "str_id": "Permit for Operation",
-        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_0/license_to_drive.md",
+        "str_id": "permit_for_operation",
+        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_0/permit_for_operation.md",
         "sn": 2,
         "name": "Permit for Operation",
         "description": "Writing a simple program independently, similar to the previous lesson.",
@@ -38,24 +38,24 @@
     "str_id": "module_1",
     "lessons": [
       {
-        "str_id": "Mission Zero",
-        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_1/short_distance_race.md",
+        "str_id": "mission_zero",
+        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_1/mission_zero.md",
         "sn": 3,
         "name": "Mission Zero",
         "description": "Using library functions to move a specific distance, both forward and backward.",
         "template": "#include <rover.h>\nvoid setup() {\n\t// Write movement functions here\n}\nvoid loop(){\n}"
       },
       {
-        "str_id": "Maneuvering",
-        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_1/maneuvering.md",
+        "str_id": "maneuvering",
+        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_1/first_maneuvering.md",
         "sn": 4,
         "name": "Maneuvering",
         "description": "Turning right and left in place. Task: Read data from a file and write it to another.",
         "template": "#include <rover.h>\nvoid setup() {\n\t// Write functions to rotate rover here\n}\nvoid loop(){\n}"
       },
       {
-        "str_id": "Your First Mission",
-        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_1/long_distance_race.md",
+        "str_id": "your_first_mission",
+        "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_1/your_first_mission.md",
         "sn": 5,
         "name": "Your First Mission",
         "description": "Writing a program with a sequence of commands to move along a trajectory depicted in the diagram.",
