@@ -19,7 +19,7 @@
         "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_0/test_mission.md",
         "sn": 1,
         "description": "Some introductory words on moving the robot forward using a library.",
-        "template": "// Paste code here"
+        "template": "#include <rover.h>\nvoid setup() {\n\t// Write movement function here\n}\nvoid loop(){\n}"
       },
       {
         "str_id": "permit_for_operation",
@@ -126,7 +126,7 @@
     "str_id": "module_4",
     "lessons": [
       {
-        "str_id": "precise_movement",
+        "str_id": "precise_movements",
         "name": "Precise Movement with Encoders",
         "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_4/precise_movement.md",
         "sn": 11,

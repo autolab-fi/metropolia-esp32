@@ -312,7 +312,7 @@ def rotate_image(image, angle):
     result = cv2.warpAffine(image, rot_mat, image.shape[1::-1], flags=cv2.INTER_LINEAR)
     return result
 
-def differential_drive(robot, image, td):
+def manual_control(robot, image, td):
     """Verification function for driving straight assignment"""
     result = {
         "success": True,
