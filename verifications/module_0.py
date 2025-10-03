@@ -104,7 +104,7 @@ def permit_for_operation(robot, image, td: dict):
             "prev_robot_center": None
         }
 
-    return test_drive(robot, image, td)
+    return test_mission(robot, image, td)
 
 
 def restore_trajectory(image, prev_point, point, color, width):
