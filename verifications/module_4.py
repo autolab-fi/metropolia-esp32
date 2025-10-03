@@ -5,7 +5,7 @@ import os
 import numpy as np
 
 target_points = {
-    'precise_movements': [(30, 50), (30, 0)],
+    'precise_movements': [(30, 50), (30, 0)]
 }
 
 block_library_functions = {

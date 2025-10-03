@@ -142,7 +142,7 @@
     "str_id": "module_5",
     "lessons": [
       {
-        "str_id": "Getting Started with Debugging Monitor",
+        "str_id": "getting_started_with_debugging_monitor",
         "name": "Getting Started with Debugging Monitor",
         "url": "https://raw.githubusercontent.com/autolab-fi/metropolia-esp32/refs/heads/main/lessons/module_5/Introduction.md",
         "sn": 12,

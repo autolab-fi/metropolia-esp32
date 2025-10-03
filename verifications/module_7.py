@@ -5,15 +5,15 @@ import os
 import numpy as np
 
 target_points = {
-    'introduction_to_variables_and_conditional_statements': [(35, 50), (0,-200)],
-    'loops_and_conditional_logic': [(35, 50), (30, 0)],
-    'array_and_processing_data': [(30, 50), (30, 0)],
+    'basic_line_follower': [(25, 50), (0,-200)],
+    'pi': [(100, 25), (30, 0)],
+    'pid': [(100, 25), (30, 0)],
 }
 
 block_library_functions = {
-    'introduction_to_variables_and_conditional_statements': False,
-    'loops_and_conditional_logic': False,
-    'array_and_processing_data': False,
+    'basic_line_follower': False,
+    'pi': False,
+    'pid': False,
 }
 
 
@@ -26,213 +26,128 @@ def get_target_points(task):
     """Retrieve target points for a given task."""
     return target_points.get(task, [])
 
-def introduction_to_variables_and_conditional_statements(robot, image, td):
-    """
-    Verification function that checks if at least one sensor (0-7) is detected as ON THE LINE.
-    """
-    result = {
-        "success": True,  # Start with success assumption
-        "description": "Waiting for sensor messages...",
-        "score": 100
-    }
-    
-    # Use a consistent verification message until the end
-    text = "Verifying..."
-    
-    # Draw robot info on image
-    image = robot.draw_info(image)
-    
-    # Initialize test data if not already set
-    if not td:
-        td = {
-            "end_time": time.time() + 10,  # 10 seconds verification time
-            "data": {
-                "sensors_on_line": set(),  # Track which sensors are detected as on the line
-                "messages": [],
-                "start_time": time.time(),
-                "result_displayed": False  # Flag to track if final result is displayed
-            }
-        }
-    
-    # Get message from robot
-    msg = robot.get_msg()
-    if msg is not None:
-        # Store all messages
-        td["data"]["messages"].append(msg)
-        
-        # Check for any sensor ON LINE messages (0-7)
-        for sensor_num in range(8):
-            if f"SENSOR {sensor_num} ON LINE" in msg.upper():
-                td["data"]["sensors_on_line"].add(sensor_num)
-    
-    # Check if time has expired
-    if time.time() > td["end_time"]:
-        # Set the final result text only once when time expires
-        if not td["data"]["result_displayed"]:
-            td["data"]["result_displayed"] = True
-            
-            if td["data"]["sensors_on_line"]:  # If any sensor is on the line
-                result["success"] = True
-                detected_sensors = ", ".join(str(s) for s in sorted(td["data"]["sensors_on_line"]))
-                result["description"] = f"Assignment passed! Detected sensors on line: {detected_sensors}"
-                text = "Verification successful!"
-            else:
-                result["success"] = False
-                
-                if not td["data"]["messages"]:
-                    result["description"] = "No messages received from robot."
-                else:
-                    result["description"] = "No sensor was detected as ON LINE."
-                
-                text = "Verification failed."
-                result["score"] = 0
-    
-    return image, td, text, result
 
-def loops_and_conditional_logic(robot, image, td):
-    """
-    Robust verification function that waits for the full time period
-    before making any pass/fail decision.
-    """
-    result = {
-        "success": True,  # Start with success assumption
-        "description": "Collecting sensor data...",
-        "score": 100
-    }
-    text = "Verifying sensor values..."
-    
-    # Draw robot info on image
-    image = robot.draw_info(image)
-    
-    # Initialize test data if not already set
-    if not td:
-        td = {
-            "end_time": time.time() + 15,  # 15 seconds verification time
-            "data": {
-                "sensor_values": {},  # Store sensor values as they come in
-                "sensors_above_threshold": set(),  # Track which sensors are above threshold
-                "messages": [],
-                "start_time": time.time(),
-                "verification_complete": False  # Flag to ensure we only complete once
-            }
-        }
-    
-    # Get message from robot
-    msg = robot.get_msg()
-    if msg is not None:
-        # Store message
-        td["data"]["messages"].append(msg)
-        
-        # Parse sensor messages in format "Sensor X: Y"
-        if "Sensor" in msg and ":" in msg:
-            try:
-                # Split by colon and extract parts
-                parts = msg.split(":")
-                if len(parts) == 2:
-                    sensor_part = parts[0].strip()
-                    value_part = parts[1].strip()
-                    
-                    # Extract sensor number
-                    sensor_num = int(sensor_part.replace("Sensor", "").strip())
-                    
-                    # Extract sensor value
-                    sensor_val = int(value_part)
-                    
-                    # Store the sensor value
-                    td["data"]["sensor_values"][sensor_num] = sensor_val
-                    
-                    # Check if value is above threshold
-                    if sensor_val > 200:
-                        td["data"]["sensors_above_threshold"].add(sensor_num)
-            except:
-                # If parsing fails, just continue
-                pass
-    
-    # CRITICAL: Do not change success/score until time expires
-    # This prevents immediate failure
-    
-    # Check if time has expired - ONLY place we set success/failure
-    if time.time() > td["end_time"] and not td["data"]["verification_complete"]:
-        td["data"]["verification_complete"] = True
-        sensors_above_threshold = len(td["data"]["sensors_above_threshold"])
-        
-        if sensors_above_threshold >= 2:
-            result["success"] = True
-            above_threshold_list = ", ".join(str(s) for s in sorted(td["data"]["sensors_above_threshold"]))
-            result["description"] = f"Assignment passed! Found {sensors_above_threshold} sensors > 200: {above_threshold_list}"
-            result["score"] = 100
-        else:
-            result["success"] = False
-            if sensors_above_threshold == 0:
-                result["description"] = "No sensors detected with values > 200."
-            else:
-                result["description"] = "Assignment Failed"
-            result["score"] = 0
-        
-        text = "Verification complete!"
-    
-    return image, td, text, result
-def array_and_processing_data(robot, image, td):
-    """
-    Verification function that passes if at least 2 sensor values are above 200.
-    """
+def basic_line_follower(robot, image, td: dict):
+    basic_line_follower_checkpoints = [(25.4,26.5),(24.2, 46.2)]
+    return checkpoint_verification(robot, image, td, basic_line_follower_checkpoints, 20)
+
+
+def pi(robot, image, td: dict):
+    pi_checkpoints = [(31, 116),(48, 99),(53, 113),(74, 114),(85,65.5)]
+    return checkpoint_verification(robot, image, td, pi_checkpoints,30)
+
+def pid(robot, image, td: dict):
+    pid_checkpoints = [(31, 116),(48, 99),(53, 113),(74, 114),(89,63.5),(46,55.4),(57.7,73.9),(61.2,26.6),(24.2, 46.2)]
+    return checkpoint_verification(robot, image, td, pid_checkpoints, 50)
+
+
+def checkpoint_verification(robot, image, td, checkpoint_positions, verification_time):
+    """Verification function for line following with multiple checkpoints"""
     result = {
         "success": True,
-        "description": "Checking for values above 200...",
+        "description": "Verifying",
         "score": 100
     }
-    text = "Verifying..."
+    text = "Follow the line through all checkpoints"
     
     # Draw robot info on image
     image = robot.draw_info(image)
     
-    # Initialize test data if not already set
+    # Initialize test data
     if not td:
         td = {
-            "end_time": time.time() + 15,
+            "start_time": time.time(),
+            "end_time": time.time() + verification_time,  # Extended time for multiple checkpoints
             "data": {
-                "values_above_200": 0,
-                "total_values": 0,  # Added for debugging
-                "start_time": time.time()
+                "reached_checkpoints": [False] * len(checkpoint_positions),
+                "task_completed": False
             }
         }
-    
-    # Get message from robot
-    msg = robot.get_msg()
-    if msg is not None:
-        # Extract any number from the message
-        import re
-        numbers = re.findall(r'\d+', msg)
         
-        for num_str in numbers:
-            try:
-                value = int(num_str)
-                # Check if it's a reasonable sensor value (0-1023 range)
-                if 0 <= value <= 1023:
-                    td["data"]["total_values"] += 1  # Count all valid values
-                    if value > 200:
-                        td["data"]["values_above_200"] += 1
-            except:
-                pass
+        # Load checkpoint image
+        try:
+            basepath = os.path.abspath(os.path.dirname(__file__))
+            filepath = os.path.join(basepath, "auto_tests", "images", "traffic-sign.jpg")
+                
+            if not os.path.exists(filepath):
+                # Create a simple colored checkpoint as fallback
+                cone = np.zeros((60, 60, 3), dtype=np.uint8)
+                cone[:, :] = (0, 255, 0)  # Green 
+            else:
+                cone = cv2.imread(filepath)
+                cone = cv2.resize(cone, (60, 60))
+                
+            mask = cv2.bitwise_not(cv2.inRange(cone, np.array([0, 240, 0]), np.array([35, 255, 35])))
+            td["data"]["cone"] = cone
+            td["data"]["cone-mask"] = mask
+        except Exception as e:
+            print(f"Error loading checkpoint image: {e}")
     
-    # Display debugging info on image
-    cv2.putText(image, f"Total values received: {td['data']['total_values']}", 
-                (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1)
+    # Update text if task is already completed
+    if td["data"]["task_completed"]:
+        text = "Robot passed all checkpoints!"
+        result["description"] = "The robot successfully passed through all checkpoints!"
+        return image, td, text, result
     
-    cv2.putText(image, f"Values above 200: {td['data']['values_above_200']}", 
-                (20, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1)
+    # Place checkpoint markers on all uncompleted checkpoints
+    for i, (y, x) in enumerate(checkpoint_positions):
+        if not td["data"]["reached_checkpoints"][i]:
+            # Make sure we stay within image bounds
+            y_start = max(0, robot.cm_to_pixel(y,2) - 30)
+            y_end = min(image.shape[0], robot.cm_to_pixel(y,2) + 30)
+            x_start = max(0, robot.cm_to_pixel(x,1) - 30)
+            x_end = min(image.shape[1], robot.cm_to_pixel(x,1) + 30)
+            
+            # Get region of interest
+            roi = image[y_start:y_end, x_start:x_end]
+            
+            # Only draw if we have a valid ROI
+            if roi.shape[0] > 0 and roi.shape[1] > 0:
+                # Create resized cone for this specific ROI if needed
+                if roi.shape != (60, 60, 3):
+                    resized_cone = cv2.resize(td["data"]["cone"], (roi.shape[1], roi.shape[0]))
+                    resized_mask = cv2.resize(td["data"]["cone-mask"], (roi.shape[1], roi.shape[0]))
+                    cv2.copyTo(resized_cone, resized_mask, roi)
+                else:
+                    cv2.copyTo(td["data"]["cone"], td["data"]["cone-mask"], roi)
     
-    # Check if time has expired
-    if time.time() > td["end_time"]:
-        if td["data"]["values_above_200"] >= 2:
+    # Check if robot passes through checkpoints
+    if robot and robot.position_px:
+        robot_x, robot_y = robot.position
+        
+        # Check each checkpoint
+        for i, (y, x) in enumerate(checkpoint_positions):
+            if not td["data"]["reached_checkpoints"][i] and np.linalg.norm([robot_x - x, robot_y - y]) < 10:
+                td["data"]["reached_checkpoints"][i] = True
+                
+                # Mark checkpoint as reached with white circle
+                y_start = max(0, robot.cm_to_pixel(y,2) - 30)
+                y_end = min(image.shape[0], robot.cm_to_pixel(y,2) + 30)
+                x_start = max(0, robot.cm_to_pixel(x,1) - 30)
+                x_end = min(image.shape[1], robot.cm_to_pixel(x,1) + 30)
+                cv2.circle(image, (robot.cm_to_pixel(x,1), robot.cm_to_pixel(y,2)), 30, (255, 255, 255), -1)
+                
+                text = f"Checkpoint {i+1}/{len(checkpoint_positions)} reached!"
+                
+        # Check if all checkpoints are reached
+        if all(td["data"]["reached_checkpoints"]):
+            td["data"]["task_completed"] = True
+            # Set the end time to 1 second from now to stop the video quickly
+            td["end_time"] = time.time() + 1
+            text = "All checkpoints passed!"
+            result["description"] = "The robot successfully passed through all checkpoints!"
+    
+    # Check for time limit
+    if td["end_time"] - time.time() < 1:
+        if td["data"]["task_completed"]:
             result["success"] = True
-            result["description"] = f"Assignment passed! Found {td['data']['values_above_200']} values > 200 out of {td['data']['total_values']} total values"
+            result["description"] = "Success! The robot passed through all checkpoints."
             result["score"] = 100
         else:
             result["success"] = False
-            result["description"] = "Assignment Failed!"
             result["score"] = 0
-        
-        text = "Verification complete!"
+            completed = sum(td["data"]["reached_checkpoints"])
+            total = len(td["data"]["reached_checkpoints"])
+            result["description"] = f" The robot only passed {completed}/{total} checkpoints in the allotted time."
     
     return image, td, text, result
