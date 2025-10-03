@@ -6,7 +6,7 @@ import numpy as np
 
 target_points = {
     'headlights': [(30, 50), (30, 0)],
-    'hazard_lights': [(30, 50), (30, 0)],
+    'hazard_lights': [(30, 50), (30, 0)]
 }
 
 block_library_functions = {
