@@ -88,7 +88,7 @@ This code is a starting point and can be expanded to process all sensor readings
 Your task for this assignment is to write code that performs the following steps:
 
 1. Read the value from sensor 5 of the Octoliner array and print to printMQTT console.
-2. Move the robot forward by 35 cm.
+2. Move the robot forward by 20 cm.
 3. Read the value from sensor 5 again and print to printMQTT console.
 
 This will help you observe how the sensor reading changes before and after the rover moves. Use this logic to understand sensor behavior and experiment with different sensitivity levels if needed. This type of "before and after" sensor measurement is exactly what Mars rovers do when investigating interesting features. For example, when Perseverance approaches a rock sample site, it first takes measurements from a distance, moves closer, then takes detailed readings before drilling. The rover compares these measurements to determine if the site is suitable for sample collection - similar to how you'll compare your sensor readings before and after movement.
