@@ -31,7 +31,7 @@ Create a program that guides the rover through three key positions: first naviga
 
 Below is a Reference Image provided for your reference
 
-![Location Info](https://github.com/autolab-fi/metropolia-esp32/blob/main/images/module_1/locations.png?raw=true)
+![Location Info](https://github.com/autolab-fi/metropolia-esp32/blob/main/images/module_1/location_traversal.png?raw=true)
 
 ```cpp
 #include <rover.h>
