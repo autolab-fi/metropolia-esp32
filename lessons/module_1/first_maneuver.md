@@ -37,10 +37,10 @@ The first-ever turn executed by a rover on Mars was by the **Sojourner rover** i
 ### Assignment
 
 Write code for the rover to perform your the following maneuvering on the martian surface.Make the rover to rotate according to the following plan :
-1.90 degrees to right
-2.45 degrees to left
-3.135 degrees to right
-4.15 degrees to right
+- 90 degrees to right
+- 45 degrees to left
+- 135 degrees to right
+- 15 degrees to right
 
 ```cpp
 #include <rover.h>
