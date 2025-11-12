@@ -226,7 +226,7 @@ def array_and_processing_data(robot, image, td):
     if time.time() > td["end_time"]:
         if td["data"]["values_above_200"] >= 2:
             result["success"] = True
-            result["description"] = f"Assignment passed! Found {td['data']['values_above_200']} values > 200 out of {td['data']['total_values']} total values"
+            result["description"] = f"Assignment passed!"
             result["score"] = 100
         else:
             result["success"] = False
